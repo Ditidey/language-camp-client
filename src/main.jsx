@@ -1,9 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './index.css'
+import './index.css';
 import { RouterProvider } from 'react-router-dom'
 import router from './routes/Routes.jsx'
+import AuthProvider from './AuthProvider'
+import 'tailwindcss/tailwind.css'; 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router}></RouterProvider>
+  <AuthProvider>
+    <div className='md:max-w-screen-2xl md:px-10 py-4'>
+    <RouterProvider router={router}></RouterProvider>
+    </div>
+  </AuthProvider>
 )

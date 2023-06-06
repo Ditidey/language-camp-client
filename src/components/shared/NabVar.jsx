@@ -4,16 +4,19 @@ import { Link, NavLink } from 'react-router-dom';
 
 const NabVar = () => {
     return (
-        <div>
+        <div className='navbar bg-white w-full fixed shadow-xl'>
             <div className='md:flex'>
-                <div className='flex'>
+                <div className='md:flex md:ps-14 hidden'>
                     <img src={logo} alt="" className='w-8 h-8'/>
-                     <Link><p>Global Talk</p></Link>
+                     <Link to='/'><p className='font-bold text-2xl font-serif ms-1 text-purple-900'>Global Talk</p></Link>
                 </div>
-                <div>
-                      <li><NavLink to='/' className={({isActive})=> isActive ? 'text-blue-800' : 'text-black'}>Home</NavLink></li>
-                      <li><NavLink className={({isActive})=> isActive ? 'text-blue-800' : 'text-black'}>Instructors</NavLink></li>
-                      <li><NavLink className={({isActive})=> isActive ? 'text-blue-800' : 'text-black'}>Classes</NavLink></li>
+                <div className='md:flex md:space-x-10 mx-20 md:ms-64 '>
+                      <p><NavLink to='/' className={({isActive})=> isActive ? 'text-blue-800' : 'text-black'}>Home</NavLink></p>
+                      <p><NavLink className={({isActive})=> isActive ? 'text-blue-800' : 'text-black'}>Instructors</NavLink></p>
+                      <p><NavLink className={({isActive})=> isActive ? 'text-blue-800' : 'text-black'}>Classes</NavLink></p>
+                </div>
+                <div className='md:ms-52'>
+                    <button className='btn'> <Link>Login</Link></button>
                 </div>
             </div>
         </div>
