@@ -8,7 +8,7 @@ const NabVar = () => {
             <div className='md:flex'>
                 <div className='flex'>
                     <img src={logo} alt="" className='w-8 h-8'/>
-                    <p>Global Talk</p>
+                     <Link><p>Global Talk</p></Link>
                 </div>
                 <div>
                       <li><NavLink to='/' className={({isActive})=> isActive ? 'text-blue-800' : 'text-black'}>Home</NavLink></li>
