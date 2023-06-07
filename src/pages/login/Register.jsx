@@ -14,10 +14,10 @@ const Register = () => {
     const [error, setError] = useState('');
 
     const onSubmit = data => {
-        console.log(data)
+        
         registerUser(data.email, data.password)
             .then(result => {
-                console.log(result.user)
+                // console.log(result.user)
 
                 updateUser(data.name, data.photo)
                     .then(() => { })

@@ -1,7 +1,9 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
+import useTitle from '../components/hooks/useTitle';
 
 const DashLayout = () => {
+    useTitle('Dashboard')
     const isAdmin = false;
     const isInstructors = true;
     return (

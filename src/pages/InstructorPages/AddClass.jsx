@@ -4,15 +4,39 @@ import { contextProvider } from '../../AuthProvider';
 const AddClass = () => {
     const { user } = useContext(contextProvider);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-         console.log(user)
+         const img_url = `https://api.imgbb.com/1/upload?expiration=600&key=${import.meta.env.VITE_IMG_TOKEN}`
+
     const onSubmit = data => {
         console.log(data)
+        const formData = new FormData();
+        formData.append('image', data.photo[0])
+         fetch(img_url, {
+            method: 'POST',
+            body: formData
+         }).then(res => res.json()).then(file => {
+            console.log(file)
+            if(file.success){
+                const imgURL = file.data.display_url;
+                const newClass = {
+                    class_image: imgURL,
+                    class_name: data.className,
+                    teacher_name: data.name,
+                    teacher_email: data.email,
+                    seat: data.seat,
+                    fee: data.fee,
+                    status: 'pending'
+                }
+                console.log(newClass)
+            }
+         })
+
 
     };
     return (
         <div className='w-full'>
             <div className="w-2/3 mx-auto shadow-2xl bg-base-100 pt-10 px-10">
                 <h1 className="text-3xl font-bold text-center mt-4">Add a class now!</h1>
+
                 <form action="" onSubmit={handleSubmit(onSubmit)}>
                     <div className="card-body">
 
@@ -27,7 +51,7 @@ const AddClass = () => {
                             <label className="label">
                                 <span className="label-text">Class Image</span>
                             </label>
-                            <input type="file" className='file-input file-input-bordered file-input-primary w-full ' {...register("className", { required: true })}   />
+                            <input type="file" className='file-input file-input-bordered file-input-primary w-full ' {...register("photo", { required: true })}   />
                             {errors.className && <span className='text-red-500'>Class image is required</span>}
                         </div>
 
@@ -36,7 +60,7 @@ const AddClass = () => {
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="email" value={user?.email} readOnly placeholder="email" {...register("email", { required: true })} className="input input-bordered" />
+                                <input type="email" defaultValue={'diti20@gmail.com'} value={user?.email} readOnly placeholder="email" {...register("email", { required: true })} className="input input-bordered" />
 
                             </div>
                             <div className="form-control w-1/2">
