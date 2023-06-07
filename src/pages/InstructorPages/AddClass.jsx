@@ -1,8 +1,11 @@
 import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
 import { contextProvider } from '../../AuthProvider';
+import useAxios from '../../components/hooks/useAxios';
+import Swal from 'sweetalert2';
 const AddClass = () => {
     const { user } = useContext(contextProvider);
+    const [axiosFetch] = useAxios()
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
          const img_url = `https://api.imgbb.com/1/upload?expiration=600&key=${import.meta.env.VITE_IMG_TOKEN}`
 
@@ -27,6 +30,19 @@ const AddClass = () => {
                     status: 'pending'
                 }
                 console.log(newClass)
+                axiosFetch.post('/add-classes', newClass)
+                .then(res => {
+                    console.log(res)
+                    if(res.data.insertedId){
+                        Swal.fire({
+                            icon: 'success',
+                            timer: '1500',
+                            text: 'Class added successfully',
+                            showConfirmButton: false,
+                        })
+                      
+                    }
+                })
             }
          })
 
