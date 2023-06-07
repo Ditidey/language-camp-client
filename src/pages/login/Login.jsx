@@ -1,13 +1,32 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Lottie from "lottie-react";
 import loginAnimation from '../../../public/VJMz4ldy4k.json';
 import { useForm } from "react-hook-form";
+import { contextProvider } from '../../AuthProvider';
+import Swal from 'sweetalert2';
+import SocialLogin from './SocialLogin';
 
 const Login = () => {
+    const {loginUser} = useContext(contextProvider);
+    const navigate = useNavigate()
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
     const onSubmit = data => {
         console.log(data)
+        loginUser(data.email, data.password)
+        .then(result => {
+            console.log(result)
+            Swal.fire({                
+                text: 'Successfully login',
+                icon: 'success',
+                timer: '1500',
+                showConfirmButton: false
+              })
+            navigate('/')
+        }
+        )
+        .catch(error => console.log(error.message))
     };
     return (
         <div>
@@ -41,7 +60,8 @@ const Login = () => {
                                 </div>
                             </div>
                         </form>
-                        <p className='text-blue-800 mb-10 ms-10'>Create account? <Link to='/register'>Register</Link></p>
+                        <SocialLogin></SocialLogin>
+                        <p className='text-blue-800 mb-10 ms-14 mt-2'>Create account? <Link to='/register'>Register</Link></p>
                     </div>
 
                 </div>

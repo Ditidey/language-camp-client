@@ -4,6 +4,8 @@ import Lottie from "lottie-react";
 import loginAnimation from '../../../public/VJMz4ldy4k.json';
 import { useForm } from "react-hook-form";
 import { contextProvider } from '../../AuthProvider';
+import Swal from 'sweetalert2';
+import SocialLogin from './SocialLogin';
 
 const Register = () => {
     const { registerUser } = useContext(contextProvider);
@@ -15,13 +17,20 @@ const Register = () => {
         registerUser(data.email, data.password)
             .then(result => {
                 console.log(result)
+                Swal.fire({
+                    title: 'Registered!',
+                    text: 'Successfully created account',
+                    icon: 'success',
+                    timer: '1500',
+                    showConfirmButton: false
+                  })
                 navigate('/')
             }
             )
             .catch(error => console.log(error.message))
     };
     return (
-        <div className='pt-20 p-8'>
+        <div className='pt-24 p-8'>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center lg:text-left w-1/2">
@@ -71,7 +80,8 @@ const Register = () => {
                                 </div>
                             </div>
                         </form>
-                        <p className='text-blue-800 mb-10 ms-10'> Already have an account? <Link to='/login'>Login</Link></p>
+                        <SocialLogin></SocialLogin>
+                        <p className='text-blue-800 mb-10 ms-10 mt-2'> Already have an account? <Link to='/login'>Login</Link></p>
                     </div>
 
                 </div>
