@@ -28,7 +28,7 @@ const NabVar = () => {
                         user ? <>
                         <Link className='mt-3'>Dashboard</Link>
                         {
-                            user.photourl ? <img src={user.photourl} alt="" /> : <div className='w-8 h-8 rounded-full border-black'>.</div>
+                            user.photourl ? <img src={user?.photourl} alt="" /> : <div className='w-8 h-8 rounded-full border-black'>.</div>
                         }
                         <button className='btn bg-purple-900 text-blue-100'>Logout</button>
                         </> 
