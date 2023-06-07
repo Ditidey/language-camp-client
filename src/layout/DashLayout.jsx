@@ -4,8 +4,8 @@ import useTitle from '../components/hooks/useTitle';
 
 const DashLayout = () => {
     useTitle('Dashboard')
-    const isAdmin = false;
-    const isInstructors = true;
+    const isAdmin = true;
+    const isInstructors = false;
     return (
         <div className='px-10'>
             <div className="drawer lg:drawer-open">
@@ -17,7 +17,7 @@ const DashLayout = () => {
                 </div>
                 <div className="drawer-side bg-purple-900">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 h-full text-white font-serif text-lg pt-10">
+                    <ul className="menu p-4 w-80 h-full text-white font-serif text-lg pt-24">
                          
                        {
                         isAdmin && <>
@@ -27,6 +27,7 @@ const DashLayout = () => {
                        }
                        {
                         isInstructors && <>
+                         <li><NavLink to='/dash/profile' className={({isActive})=> isActive ? 'text-blue-400' : ''}>Profile</NavLink></li>
                          <li><NavLink to='/dash/class-add' className={({isActive})=> isActive ? 'text-blue-400' : ''}>Add a Class</NavLink></li>
                          <li><NavLink to='/dash/my-classes' className={({isActive})=> isActive ? 'text-blue-400' : ''}>My Classes</NavLink></li>
                         </>
