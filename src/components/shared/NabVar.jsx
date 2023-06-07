@@ -28,7 +28,7 @@ const NabVar = () => {
                 <div className='md:ms-32 flex'>
                     {
                         user ? <>
-                        <Link className='mt-3'>Dashboard</Link>
+                        <Link to='/dash' className='mt-3'>Dashboard</Link>
                         {
                             user.photoURL ? <img src={user?.photoURL} alt="" className='w-10 h-10 rounded-full mx-4 mt-2'/> :  <img className=' mx-4 w-10 h-10 rounded-full' src={unphoto} alt="" />
                         }
