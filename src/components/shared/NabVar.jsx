@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import logo from '../../../public/logo.png';
 import { Link, NavLink } from 'react-router-dom';
 import { contextProvider } from '../../AuthProvider';
+import unphoto from '../../../public/unphoto.png'
 
 const NabVar = () => {
     const {user, logoutUser} = useContext(contextProvider);
@@ -28,9 +29,9 @@ const NabVar = () => {
                         user ? <>
                         <Link className='mt-3'>Dashboard</Link>
                         {
-                            user.photourl ? <img src={user?.photourl} alt="" /> : <div className='w-8 h-8 rounded-full border-black'>.</div>
+                            user.photoURL ? <img src={user?.photoURL} alt="" className='w-10 h-10 rounded-full mx-4 mt-2'/> :  <img className=' mx-4 w-10 h-10 rounded-full' src={unphoto} alt="" />
                         }
-                        <button className='btn bg-purple-900 text-blue-100'>Logout</button>
+                        <button onClick={handleLogout} className='btn bg-purple-900 text-blue-100'>Logout</button>
                         </> 
                         :
                         <button className='btn bg-purple-900 text-blue-100'> <Link to='/login'>Login</Link></button>
