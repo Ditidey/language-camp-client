@@ -12,11 +12,11 @@ const NabVar = () => {
                 </div>
                 <div className='md:flex md:space-x-10 mx-20 md:ms-64 '>
                       <p><NavLink to='/' className={({isActive})=> isActive ? 'text-blue-800' : 'text-black'}>Home</NavLink></p>
-                      <p><NavLink className={({isActive})=> isActive ? 'text-blue-800' : 'text-black'}>Instructors</NavLink></p>
-                      <p><NavLink className={({isActive})=> isActive ? 'text-blue-800' : 'text-black'}>Classes</NavLink></p>
+                      <p><NavLink to='/instructors' className={({isActive})=> isActive ? 'text-blue-800' : 'text-black'}>Instructors</NavLink></p>
+                      <p><NavLink to='classes' className={({isActive})=> isActive ? 'text-blue-800' : 'text-black'}>Classes</NavLink></p>
                 </div>
                 <div className='md:ms-52'>
-                    <button className='btn'> <Link>Login</Link></button>
+                    <button className='btn bg-purple-900 text-blue-100'> <Link to='/login'>Login</Link></button>
                 </div>
             </div>
         </div>
