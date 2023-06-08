@@ -11,13 +11,7 @@ const DashLayout = () => {
     const [role, setRole] = useState(null);
     useTitle('Dashboard');
     const [status] = useStatus();
-    // useEffect(()=>{
-    //     fetch(`http://localhost:5000/${user?.email}`)
-    //     .then(res => res.json())
-    //     .then(data => console.log(data))
-    // },[user])
-    
-    // console.log(userStatus)
+     console.log(status)
     const isAdmin = true;
     const isInstructors = false;
     return (
