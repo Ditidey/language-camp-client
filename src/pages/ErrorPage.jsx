@@ -10,8 +10,8 @@ const ErrorPage = () => {
     useEffect(() => {
         anime({
             targets: errRef.current,
-            translateX: '30vw',
-            duration: 3000,
+            translateX: '0vw',
+            duration: 6000,
             // easing: 'easeInOutQuad',
             loop: true,
         })

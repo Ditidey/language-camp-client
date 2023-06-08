@@ -12,7 +12,7 @@ const AddClass = () => {
     const onSubmit = data => {
         console.log(data)
         const formData = new FormData();
-        formData.append('image', data.photo[0])
+        formData.append('image', data.photo.files[0])
          fetch(img_url, {
             method: 'POST',
             body: formData

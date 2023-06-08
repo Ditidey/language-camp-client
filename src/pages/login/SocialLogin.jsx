@@ -1,12 +1,25 @@
 import React, { useContext, useState } from 'react';
 import { contextProvider } from '../../AuthProvider';
-import { FaGoogle } from 'react-icons/fa'
+import { FaGoogle } from 'react-icons/fa';
+import { saveStudents } from '../../components/api-calls/apiCalls';
+import { useNavigate } from 'react-router-dom';
 const SocialLogin = () => {
     const { googleLogin } = useContext(contextProvider);
-    const [err, setErr] = useState('')
+    const [err, setErr] = useState('');
+    const navigate = useNavigate();
+
     const handleGoogle = () => {
             googleLogin()
-            .then()
+            .then(result =>{
+                console.log(result.user)
+                const googleuser = {
+                    email: result.user.email,
+                    name: result.user.displayName,
+                    photo: result.user.photoURL
+                }
+                saveStudents(googleuser);
+                navigate('/')
+            })
             .catch(error => setErr(error.message))
     }
     return (

@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { contextProvider } from '../../AuthProvider';
 import Swal from 'sweetalert2';
 import SocialLogin from './SocialLogin';
+import { saveStudents } from '../../components/api-calls/apiCalls';
 
 const Register = () => {
     const { registerUser, updateUser } = useContext(contextProvider);
@@ -17,8 +18,15 @@ const Register = () => {
         
         registerUser(data.email, data.password)
             .then(result => {
-                // console.log(result.user)
+                console.log(result)
+                console.log(result.user.UserImpl)
+                const students = {
+                    email: result.user.email,
+                    name: data.name,
+                    photo: data.photo
 
+                }
+                console.log(students)
                 updateUser(data.name, data.photo)
                     .then(() => { })
                     .catch(err => {
@@ -33,6 +41,7 @@ const Register = () => {
                     timer: '1500',
                     showConfirmButton: false
                 })
+                saveStudents(students)
                 navigate('/')
             }
             )

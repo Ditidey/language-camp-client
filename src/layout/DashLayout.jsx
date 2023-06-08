@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import useTitle from '../components/hooks/useTitle';
 import { FaBook, FaHome, FaSchool, FaUserCheck, FaUsers } from 'react-icons/fa';
+import { contextProvider } from '../AuthProvider';
+import useStatus from '../components/hooks/useStatus';
+// import { getStatus } from '../components/api-calls/adminApi';
 
 const DashLayout = () => {
-    useTitle('Dashboard')
+    const {user} = useContext(contextProvider);
+    const [role, setRole] = useState(null);
+    useTitle('Dashboard');
+    const [status] = useStatus();
+    // useEffect(()=>{
+    //     fetch(`http://localhost:5000/${user?.email}`)
+    //     .then(res => res.json())
+    //     .then(data => console.log(data))
+    // },[user])
+    
+    // console.log(userStatus)
     const isAdmin = true;
     const isInstructors = false;
     return (
@@ -41,7 +54,7 @@ const DashLayout = () => {
                         <li><NavLink to='/' className={({isActive})=> isActive ? 'text-blue-400' : ''}><FaHome></FaHome>Home</NavLink></li>
                         <li><NavLink to='/classes' className={({isActive})=> isActive ? 'text-blue-400' : ''}><FaBook></FaBook>Classes</NavLink></li>
                         <li><NavLink to='/instructors' className={({isActive})=> isActive ? 'text-blue-400' : ''}><FaUserCheck></FaUserCheck>Instructors</NavLink></li>
-                        <button className='bg-purple-50 p-5 text-blue-900 uppercase mt-10'>Log out</button>
+                        <button className='bg-purple-50 p-5 text-blue-900 uppercase mt-52'>Log out</button>
                         
                     </ul>
 
