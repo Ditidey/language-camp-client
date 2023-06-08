@@ -8,11 +8,10 @@ import useStatus from '../components/hooks/useStatus';
 
 const DashLayout = () => {
     const {user} = useContext(contextProvider);
-    const [role, setRole] = useState(null);
     useTitle('Dashboard');
     const [status] = useStatus();
      console.log(status)
-    const isAdmin = true;
+   
     const isInstructors = false;
     return (
         <div className='px-10'>
@@ -29,14 +28,14 @@ const DashLayout = () => {
                     <ul className="menu p-4 w-80 h-full text-white font-serif text-lg pt-24">
                          
                        {
-                        isAdmin && <>
-                         <li><NavLink to='/dash/admin' className={({isActive})=> isActive ? 'text-blue-400' : ''}><FaHome></FaHome>Admin Dashboard</NavLink></li>
+                         status == 'admin' && <>
+                         <li><NavLink to='/dash/admin-profile' className={({isActive})=> isActive ? 'text-blue-400' : ''}><FaHome></FaHome>Admin Dashboard</NavLink></li>
                          <li><NavLink to='/dash/class-manage' className={({isActive})=> isActive ? 'text-blue-400' : ''}><FaSchool></FaSchool> Manage Classes</NavLink></li>
                          <li><NavLink to='/dash/manage-user' className={({isActive})=> isActive ? 'text-blue-400' : ''}><FaUsers></FaUsers>Manage Users</NavLink></li>
                         </>
                        }
                        {
-                        isInstructors && <>
+                        status == 'instructor' && <>
                          <li><NavLink to='/dash/profile' className={({isActive})=> isActive ? 'text-blue-400' : ''}>Profile</NavLink></li>
                          <li><NavLink to='/dash/class-add' className={({isActive})=> isActive ? 'text-blue-400' : ''}>Add a Class</NavLink></li>
                          <li><NavLink to='/dash/my-classes' className={({isActive})=> isActive ? 'text-blue-400' : ''}>My Classes</NavLink></li>

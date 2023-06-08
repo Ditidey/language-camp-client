@@ -11,8 +11,8 @@ const useStatus = () => {
     queryKey: ['status', user?.email],
     queryFn: async ()=>{
         const res = await axiosFetch.get(`/students/${user?.email}`)
-        console.log(res.data.status)
-        return res.data;
+        // console.log(res.data.status)
+        return res.data.status;
     }
   });
 

@@ -12,6 +12,7 @@ import ClassManage from "../pages/AdminPages/ClassManage";
 import ManageUser from "../pages/AdminPages/ManageUser";
 import InstructorClasses from "../pages/InstructorPages/InstructorClasses";
 import AddClass from "../pages/InstructorPages/AddClass";
+import AdminProfile from "../pages/AdminPages/AdminProfile";
 
 const router = createBrowserRouter([
     {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
         element:  <ProtectedRoute><DashLayout></DashLayout></ProtectedRoute>,
         errorElement: <ErrorPage></ErrorPage>,
         children: [
+                {
+                   path: 'admin-profile',
+                   element: <AdminProfile></AdminProfile>
+                },
                 {
                     path: 'class-manage',
                     element: <ClassManage></ClassManage>
