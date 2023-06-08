@@ -1,8 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import anime from 'animejs';
+import React, { useEffect, useRef, useState } from 'react';
 
 const Instructors = () => {
     const [teachers, setTeachers] = useState([]);
-
+    const cardRef = useRef(null)
+    useEffect(() => {
+        anime({
+            targets: cardRef.current,
+            translateY: '-3vw',
+            duration: 6000,
+            // easing: 'easeInOutQuad',
+            loop: true,
+        })
+    },
+        [])
     useEffect(() => {
         fetch('http://localhost:5000/students')
             .then(res => res.json())
@@ -19,13 +30,14 @@ const Instructors = () => {
 
             <div className='p-20 grid md:grid-cols-3 lg:grid-cols-4 gap-5'>
                 {
-                    teachers.map(tech => <div key={tech._id} className="card w-96 glass">
-                        <figure><img src={tech.photo} alt="car!" /></figure>
+                    teachers.map(tech => 
+                    <div ref={cardRef} key={tech._id} className="card w-96 glass">
+                        <figure><img ref={cardRef} src={tech.photo} alt="car!" /></figure>
                         <div className="card-body">
                             <h2 className="card-title">{tech.name}</h2>
                             <p>{tech.email}</p>
                             <div className="card-actions justify-end">
-                                <button className="btn btn-primary">See classes!</button>
+                                <button className="btn btn-primary bg-purple-800">See classes!</button>
                             </div>
                         </div>
                     </div>)
