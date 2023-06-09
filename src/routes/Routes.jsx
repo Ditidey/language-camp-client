@@ -13,6 +13,10 @@ import ManageUser from "../pages/AdminPages/ManageUser";
 import InstructorClasses from "../pages/InstructorPages/InstructorClasses";
 import AddClass from "../pages/InstructorPages/AddClass";
 import AdminProfile from "../pages/AdminPages/AdminProfile";
+import ProfileInstructor from "../pages/InstructorPages/ProfileInstructor";
+import SelectedClasses from "../pages/UserPages/SelectedClasses";
+import EnrolledClasses from "../pages/UserPages/EnrolledClasses";
+import UserPro from "../pages/UserPages/UserPro";
 
 const router = createBrowserRouter([
     {
@@ -60,12 +64,28 @@ const router = createBrowserRouter([
                     element:<ManageUser></ManageUser>
                 },
                 {
+                    path: 'teacher-profile',
+                    element: <ProfileInstructor></ProfileInstructor>
+                },
+                {
                     path: 'my-classes',
                     element: <InstructorClasses></InstructorClasses>
                 },
                 {
                     path: 'class-add',
                     element: <AddClass></AddClass>
+                },
+                {
+                    path: 'select-classes',
+                    element: <SelectedClasses></SelectedClasses>
+                },
+                {
+                    path: 'enroll-classes',
+                    element: <EnrolledClasses></EnrolledClasses>
+                },
+                {
+                    path: 'user-profile',
+                    element: <UserPro></UserPro>
                 }
         ]
     }

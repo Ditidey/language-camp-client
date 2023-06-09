@@ -2,8 +2,8 @@ import React from 'react';
 
 const ProfileInstructor = () => {
     return (
-        <div>
-            
+        <div className='p-20 w-full'>
+            Todo
         </div>
     );
 };
