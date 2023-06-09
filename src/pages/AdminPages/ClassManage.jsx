@@ -52,9 +52,9 @@ const ClassManage = () => {
                                 <td className='text-center'>{each.seat}</td>
                                 <td className='text-left'>${each.fee}</td>
                                 <td className='uppercase'>{each.status}</td>
-                                <td className='text-center'>0</td>
+                                 
                                 <th><button disabled={each.status == 'approve' || each.status == 'deny'} onClick={() => handleApprove(each)} className='btn bg-purple-800 text-blue-100'> Approved</button></th>
-                                <th><button disabled={each.status == 'approve' || each.status == 'deny'} onClick={() => handleDeny(each)} className='btn bg-purple-800 text-blue-100'> Deny</button></th>
+                                <th><button disabled={each.status == 'approve' || each.status == 'deny'} onClick={() => handleDeny(each)} className='btn bg-purple-800 text-blue-100'> Denied</button></th>
                                 <th><button value={each._id} onClick={() => window.my_modal_1.showModal()} className='btn bg-purple-800 text-blue-100'><FaEdit className='text-purple-100'></FaEdit>Feedback</button></th>
                             </tr>)
                         }

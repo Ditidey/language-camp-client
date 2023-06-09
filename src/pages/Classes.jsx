@@ -19,11 +19,11 @@ const Classes = () => {
             <p className='text-center text-3xl font-serif my-2'> Total {classes.length} classes</p>
             <hr className='w-2/3 ms-96 border-purple-600 mb-10' />
 
-            <div className='ps-20 pb-20 grid md:grid-cols-3 lg:grid-cols-4 gap-2'>
+            <div className='px-10 pb-20 grid md:grid-cols-2 lg:grid-cols-3 gap-5'>
                 {
                     classes.map(each =>
-                        <div key={each._id} className={each.seat == 0 ? 'bg-red-500' : 'card card-side bg-base-100 shadow-xl pe-2 w-[400px]'}>
-                            <figure><img src={each.class_image} alt="class" /></figure>
+                        <div key={each._id} className={each.seat == 0 ? 'bg-red-300 card card-side' : 'card card-side bg-base-100 shadow-xl pe-2 w-[470px]'}>
+                            <figure><img src={each.class_image} alt="class" className='w-[180px] h-full'/></figure>
                             <div className="card-body w-[200px]">
                                 <h2 className="card-title">{each.class_name}</h2>
                                 <p>{each.teacher_name}</p>

@@ -12,7 +12,7 @@ const AddClass = () => {
     const onSubmit = data => {
         console.log(data)
         const formData = new FormData();
-        formData.append('image', data.photo.files[0])
+        formData.append('image', data.photo[0])
          fetch(img_url, {
             method: 'POST',
             body: formData
@@ -76,7 +76,7 @@ const AddClass = () => {
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="email" defaultValue={'diti20@gmail.com'} value={user?.email} readOnly placeholder="email" {...register("email", { required: true })} className="input input-bordered" />
+                                <input type="email"  value={user?.email} readOnly placeholder="email" {...register("email", { required: true })} className="input input-bordered" />
 
                             </div>
                             <div className="form-control w-1/2">
