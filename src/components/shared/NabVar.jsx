@@ -14,13 +14,13 @@ const NabVar = () => {
     }
 
     return (
-        <div className='navbar bg-white w-full fixed z-10  shadow-xl ps-20 '>
+        <div className='navbar bg-white w-full fixed z-10  shadow-xl md:ps-20 '>
             <div className='md:flex '>
-                <div className='md:flex md:ps-14 hidden p-4'>
+                <div className='md:flex md:ps-14 hidden md:p-4'>
                     <img src={logo} alt="" className='w-8 h-8'/>
                      <Link to='/'><p className='font-bold text-2xl font-serif ms-1 text-purple-900 flex'>Global Talk</p></Link>
                 </div>
-                <div className='md:flex md:space-x-10 mx-20  md:ms-44'>
+                <div className='flex space-x-2 mx-2 md:space-x-10 md:mx-20  md:ms-44'>
                       <p><NavLink to='/' className={({isActive})=> isActive ? 'text-blue-800' : 'text-black'}>Home</NavLink></p>
                       <p><NavLink to='/instructors' className={({isActive})=> isActive ? 'text-blue-800' : 'text-black'}>Instructors</NavLink></p>
                       <p><NavLink to='classes' className={({isActive})=> isActive ? 'text-blue-800' : 'text-black'}>Classes</NavLink></p>

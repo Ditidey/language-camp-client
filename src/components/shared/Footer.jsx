@@ -5,7 +5,7 @@ import { CiLocationOn } from 'react-icons/ci';
 import logo from '../../../public/logo.png'
 const Footer = () => {
     return (
-        <div className='bg-purple-950 pt-14 px-6'>
+        <div className='bg-purple-950 mt-96 md:mt-2 md:pt-14 px-6'>
             <div className='md:flex md:justify-evenly'>
                 <div className='text-center pt-20'>
                     <img src={logo} alt="" className='w-10 h-10 md:ms-8 mt-2 my-2 ms-44' />
