@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getClasses } from '../../components/api-calls/apiCalls';
 import { FaEdit } from 'react-icons/fa';
 import useAxios from '../../components/hooks/useAxios';
@@ -6,19 +6,31 @@ import { statusApprove, statusDeny } from '../../components/api-calls/adminApi';
 
 const ClassManage = () => {
     const [classes] = getClasses();
-
+    const [opinion, setOpinion] = useState('')
     const handleApprove = (each) => {
         statusApprove(each);
     }
     const handleDeny = each => {
         statusDeny(each);
     }
-    const handleFeedback = event =>{
+    const handleFeedback = (each) =>{
+        window.my_modal_1.showModal()
+            
+        if(opinion !== ''){
+            console.log('from feedback',opinion)
+        }
+         
         //  event.preventDefault();
-          const feedback = event.target.feedback.value;
-         console.log(event.target.feedback.value)
+        //   const feedback = event.target.feedback.value;
+        //  console.log(event.target.feedback.value)
         //  console.log(event.target.value)
     }
+     const handleModal = event =>{
+        const feedback = event.target.feedback.value;
+        console.log(feedback)
+         setOpinion(feedback);
+         event.target.reset();
+     }
     return (
         <div className='w-full px-5 py-10 overflow-x-auto'>
             <hr className='w-1/3 ms-96 border-purple-600' />
@@ -55,7 +67,7 @@ const ClassManage = () => {
                                  
                                 <th><button disabled={each.status == 'approve' || each.status == 'deny'} onClick={() => handleApprove(each)} className='btn bg-purple-800 text-blue-100'> Approved</button></th>
                                 <th><button disabled={each.status == 'approve' || each.status == 'deny'} onClick={() => handleDeny(each)} className='btn bg-purple-800 text-blue-100'> Denied</button></th>
-                                <th><button value={each._id} onClick={() => window.my_modal_1.showModal()} className='btn bg-purple-800 text-blue-100'><FaEdit className='text-purple-100'></FaEdit>Feedback</button></th>
+                                <th><button  onClick={() => handleFeedback(each)} className='btn bg-purple-800 text-blue-100'><FaEdit className='text-purple-100'></FaEdit>Feedback</button></th>
                             </tr>)
                         }
                     </tbody>
@@ -63,7 +75,7 @@ const ClassManage = () => {
             </div>
 
             <dialog id="my_modal_1" className="modal">
-                <form onSubmit={handleFeedback} method="dialog" className="modal-box">
+                <form onSubmit={handleModal} method="dialog" className="modal-box">
                     <p className='text-2xl font-serif text-center'>Feedback for instructor</p>
                     <div>
                         <input type="textarea" name='feedback' placeholder='Feedback please' className='border border-purple-300  mt-10 w-full h-20 p-4' />

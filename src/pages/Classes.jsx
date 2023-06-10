@@ -35,11 +35,11 @@ const Classes = () => {
     }
     return (
         <div className='pt-28 w-full'>
-            <hr className='w-2/3 ms-96 border-purple-600' />
-            <p className='text-center text-3xl font-serif my-2'> Total {classes.length} classes</p>
-            <hr className='w-2/3 ms-96 border-purple-600 mb-10' />
+            <hr className='w-1/3 mx-auto border-purple-600 border-2' />
+            <p className='text-center text-3xl font-serif my-3'> Total {classes.length} classes</p>
+            <hr className='w-1/3 mx-auto border-purple-600 border-2' />
 
-            <div className='px-10 pb-20 grid md:grid-cols-2 lg:grid-cols-3 gap-5'>
+            <div className='px-10 pt-10 pb-20 grid md:grid-cols-2 lg:grid-cols-3 gap-5'>
                 {
                     classes.map(each =>
                         <div key={each._id} className={each.seat == 0 ? 'bg-red-300 card card-side' : 'card card-side bg-base-100 shadow-xl pe-2 w-[470px]'}>

@@ -16,7 +16,7 @@ export const getStudents = ()=>{
     const {data: students =[], refetch} = useQuery({
         queryKey: ['students'],
         queryFn: async ()=>{
-            const res = await axiosFetch('/students')
+            const res = await axiosFetch.get('/students')
             return res.data;
         }
     })
@@ -28,7 +28,7 @@ export const getClasses = ()=>{
     const {data: classes =[], refetch} = useQuery({
         queryKey: ['classes'],
         queryFn: async ()=>{
-            const res = await axiosFetch('/classes')
+            const res = await axiosFetch.get('/classes')
             return res.data;
         }
     })

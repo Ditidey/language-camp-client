@@ -1,7 +1,7 @@
 import React from 'react';
 import { useContext } from 'react';
 import { contextProvider } from '../../AuthProvider';
-import { deleteClass, enrolledClasses, getSelectedClasses } from '../../components/api-calls/studentApi';
+import { deleteClass, enrolledClasses, enrolledSelectedClasses, getSelectedClasses } from '../../components/api-calls/studentApi';
 
 const SelectedClasses = () => {
     const { user } = useContext(contextProvider);
@@ -13,7 +13,8 @@ const SelectedClasses = () => {
     }
 
     const handlePay = oneClass =>{
-             enrolledClasses(oneClass._id)
+             enrolledClasses(oneClass);
+             enrolledSelectedClasses(oneClass);
     }
     return (
         <div>

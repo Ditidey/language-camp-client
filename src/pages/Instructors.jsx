@@ -1,5 +1,6 @@
 import anime from 'animejs';
 import React, { useEffect, useRef, useState } from 'react';
+import DivTitle from '../components/shared/DivTitle';
 
 const Instructors = () => {
     const [teachers, setTeachers] = useState([]);
@@ -24,9 +25,10 @@ const Instructors = () => {
     }, [])
     return (
         <div className='pt-28'>
-            <hr className='w-2/3 ms-96 border-purple-600' />
-            <p className='text-center text-3xl font-serif my-2'> Total {teachers.length} instructors</p>
-            <hr className='w-2/3 ms-96 border-purple-600 mb-8' />
+             
+            <hr className='w-1/3 mx-auto border-purple-600 border-2' />
+            <p className='text-center text-3xl font-serif my-3'> Total {teachers.length} instructors</p>
+            <hr className='w-1/3 mx-auto border-purple-600 mb-8 border-2' />
 
             <div ref={cardRef} className='p-20 grid md:grid-cols-2 lg:grid-cols-3 gap-5'>
                 {

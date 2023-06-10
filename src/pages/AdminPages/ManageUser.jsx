@@ -46,7 +46,7 @@ const ManageUser = () => {
                                 </td>
                                 <td>{student.name}</td>
                                 <td>{student.email}</td>
-                                <td>{student.status || 'User'}</td>
+                                <td className='uppercase shadow-sm'>{student.status || 'User'}</td>
                                 <th>
                                     <button disabled={student.status} onClick={()=>handleAdmin(student)} className="btn btn-ghost bg-purple-800 text-blue-100 btn-xs">Admin</button>
                                 </th>

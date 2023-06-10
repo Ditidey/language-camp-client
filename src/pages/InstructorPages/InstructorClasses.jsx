@@ -37,9 +37,9 @@ const InstructorClasses = () => {
                             <td>{each.class_name}</td>
                             <td className='text-left'>${each.fee}</td>
                             <td className='text-center'>{each.seat}</td>
-                            <td className='text-center'>0</td>
+                            <td className='text-center'>{each.students || 0}</td>
                             <td>{each.status}</td>
-                            <td>no</td>
+                            <td>{each.feedback || 'No feedback for it'}</td>
                             <th><button className='btn bg-purple-800 text-blue-100'><FaEdit className='text-purple-100'></FaEdit>Edit</button></th>
                         </tr>)
                           }

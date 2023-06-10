@@ -1,12 +1,42 @@
  import { useState } from "react";
 import Swal from "sweetalert2";
  
-export const enrolledClasses = (id)=>{
-    const enroll = {enroll: 'yes'}
-    fetch(`http://localhost:5000/selected-classes/${id}`,{
+export const enrolledClasses = (selectClass)=>{
+    const number =  parseInt(selectClass.seat) - 1;
+    // console.log(number);
+    let count = parseInt(selectClass?.students || 0);
+    const studentCount = count + 1;
+   const updatedClassInfo = {
+           enroll: 'yes',
+           seat: number,
+           students: studentCount,
+    }
+    // const enroll = {enroll: 'yes'}
+    fetch(`http://localhost:5000/classes/${selectClass.class_id}`,{
         method: 'PUT',
         headers: {'content-type': 'application/json'},
-        body: JSON.stringify(enroll)
+        body: JSON.stringify(updatedClassInfo)
+    })
+    .then(res => res.json())
+    .then(data =>{
+       console.log(data)
+    })
+}
+export const enrolledSelectedClasses = (selectClass)=>{
+    const number =  parseInt(selectClass.seat) - 1;
+    // console.log(number);
+    // let count = parseInt(selectClass?.students || 0);
+    // const studentCount = count + 1;
+   const updatedClassInfo = {
+           enroll: 'yes',
+           seat: number,
+        //    students: studentCount,
+    }
+    // const enroll = {enroll: 'yes'}
+    fetch(`http://localhost:5000/selected-classes/${selectClass.class_id}`,{
+        method: 'PUT',
+        headers: {'content-type': 'application/json'},
+        body: JSON.stringify(updatedClassInfo)
     })
     .then(res => res.json())
     .then(data =>{
