@@ -21,6 +21,7 @@ import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
 import UpdateClass from "../pages/InstructorPages/UpdateClass";
 import Payment from "../pages/UserPages/Payment";
+import PaymentHistory from "../pages/UserPages/PaymentHistory";
 
 const router = createBrowserRouter([
     {
@@ -101,6 +102,10 @@ const router = createBrowserRouter([
                 {
                     path: 'payment/:id',
                     element: <Payment></Payment>
+                },
+                {
+                    path: 'payment-history',
+                    element: <PaymentHistory></PaymentHistory>
                 }
         ]
     }

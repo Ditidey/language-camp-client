@@ -13,14 +13,14 @@ const SelectedClasses = () => {
         deleteClass(id);
     }
 
-    const handlePay = oneClass => {
-        enrolledClasses(oneClass);
-        enrolledSelectedClasses(oneClass);
-    }
+    // const handlePay = oneClass => {
+    //     enrolledClasses(oneClass);
+    //     enrolledSelectedClasses(oneClass);
+    // }
     return (
         <div className='pt-10 w-full h-full'>
             <hr className='w-2/3 ms-44 border-purple-600' />
-            <p className='text-center text-3xl font-serif my-2'> Total {selectedClasses.length} classes</p>
+            <p className='text-center text-3xl font-serif my-2 uppercase'> Total {selectedClasses.length} classes</p>
             <hr className='w-2/3 ms-44 border-purple-600 mb-10' />
             {
                 selectedClasses && Array.isArray(selectedClasses) && selectedClasses.length > 0 &&

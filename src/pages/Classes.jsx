@@ -48,6 +48,7 @@ const Classes = () => {
                                 <h2 className="card-title">{each.class_name}</h2>
                                 <p>Teacher: {each.teacher_name}</p>
                                 <p>Email: {each.teacher_email}</p>
+                                <p>Students: {each.students || 0}</p>
                                 <div className='flex'>
                                     <p className='me-4'>Seat: {each.seat}</p>
                                     <p>Price: ${each.fee}</p>

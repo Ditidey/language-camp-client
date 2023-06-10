@@ -4,6 +4,8 @@ import { useContext } from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { contextProvider } from '../../AuthProvider';
+import Swal from 'sweetalert2';
+import { enrolledClasses, enrolledSelectedClasses } from '../../components/api-calls/studentApi';
 // import useAxios from '../../components/hooks/useAxios';
 
 const PayMentForm = ({ eachClass, price }) => {
@@ -13,28 +15,32 @@ const PayMentForm = ({ eachClass, price }) => {
     const [clientSecret, setClientSecret] = useState("");
     const [processing, setProcessing] = useState(false);
     const [success, setSuccess] = useState('');
-    const {user} = useContext(contextProvider);
+    const { user } = useContext(contextProvider);
     // const [axiosFetch] = useAxios();
     // const price = eachClass.price;
     console.log(price, eachClass)
 
-    useEffect(() => {
-        console.log('use effect ...',price)
-        // axiosFetch.post('/create-payment', { price })
-        //     .then(res => {
-        //         console.log(res.data.clientSecret)
-        //         setClientSecret(res.data.clientSecret)
-        //     })
-         fetch('http://localhost:5000/create-payment', {
-            method: 'POST',
-            headers: {'content-type': 'application/json'},
-            body: JSON.stringify({price})
-         }).then(res=>res.json())
-         .then(data =>{
-             console.log(data.clientSecret)
-            setClientSecret(data.clientSecret)
-         })
-    }, [price])
+    
+        useEffect(() => {
+            console.log('use effect ...', price)
+          if(price > 0){
+               // axiosFetch.post('/create-payment', { price })
+            //     .then(res => {
+            //         console.log(res.data.clientSecret)
+            //         setClientSecret(res.data.clientSecret)
+            //     })
+            fetch('http://localhost:5000/create-payment', {
+                method: 'POST',
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify({ price })
+            }).then(res => res.json())
+                .then(data => {
+                    console.log(data.clientSecret)
+                    setClientSecret(data.clientSecret)
+                })
+          }
+        }, [price])
+  
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -58,27 +64,53 @@ const PayMentForm = ({ eachClass, price }) => {
             setError('');
             // console.log('payment', paymentMethod)
         }
-         setProcessing(true)
-     const {paymentIntent, error:confirmError} =await stripe.confirmCardPayment(clientSecret, {
-                payment_method: {
-                    card: card,
-                    billing_details: {
-                        name:  user?.displayName || 'Unknown',
-                        email: user?.email || 'Unknown',
-                    },
+        setProcessing(true)
+        const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(clientSecret, {
+            payment_method: {
+                card: card,
+                billing_details: {
+                    name: user?.displayName || 'Unknown',
+                    email: user?.email || 'Unknown',
                 },
+            },
+        })
+        if (confirmError) {
+            console.log(confirmError)
+            setError(confirmError.message)
+        }
+
+        console.log('intent', paymentIntent)
+        setProcessing(false);
+
+        if (paymentIntent.status === 'succeeded') {
+            setSuccess(paymentIntent.id);
+            const payDetails = {
+                transaction_id: paymentIntent.id,
+                class_id: eachClass.class_id,
+                class_image: eachClass.class_image,
+                class_name: eachClass.class_name,
+                fee: price,
+                date: new Date(),
+                seat: eachClass.seat - 1,
+                student_email: user.email,
+                teacher_email: eachClass.teacher_email,
+                students: eachClass.students + 1 || 1,
+            }
+            fetch('http://localhost:5000/payment',{
+                method: 'POST',
+                headers: {'content-type': 'application/json'},
+                body: JSON.stringify(payDetails)
+            }).then(res=>res.json())
+            .then(data=>{
+                if(data.insertedId){
+                    Swal.fire(
+                        'Payment done'
+                    )
+                }
+                enrolledClasses(eachClass);
+                enrolledSelectedClasses(eachClass);
             })
-             if(confirmError){
-                console.log(confirmError)
-                setError(confirmError.message)
-             }
-
-             console.log('intent', paymentIntent)
-             setProcessing(false);
-
-             if(paymentIntent.status === 'succeeded'){
-                setSuccess(paymentIntent.id);
-             }
+        }
     }
 
 

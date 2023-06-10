@@ -2,7 +2,7 @@ import React, { useContext  } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import useTitle from '../components/hooks/useTitle';
 import {SiGoogleclassroom} from 'react-icons/si'
-import {  FaHome, FaSchool, FaUserAlt, FaUserCheck, FaUsers } from 'react-icons/fa';
+import {  FaHistory, FaHome, FaSchool, FaUserAlt, FaUserCheck, FaUsers } from 'react-icons/fa';
 import {MdPlaylistAdd, MdCollectionsBookmark, MdSupervisedUserCircle, MdVerifiedUser, MdClass} from 'react-icons/md';
 import { contextProvider } from '../AuthProvider';
 import useStatus from '../components/hooks/useStatus';
@@ -57,6 +57,7 @@ const DashLayout = () => {
                              <li><NavLink to='/dash/user-profile' className={({isActive})=> isActive ? 'text-blue-400' : ''}><FaUserAlt></FaUserAlt> Profile</NavLink></li>
                              <li><NavLink to='/dash/select-classes' className={({isActive})=> isActive ? 'text-blue-400' : ''}><SiGoogleclassroom></SiGoogleclassroom>Selected Classes</NavLink></li>
                              <li><NavLink to='/dash/enroll-classes' className={({isActive})=> isActive ? 'text-blue-400' : ''}> <MdClass></MdClass> Enrolled Classes</NavLink></li>
+                             <li><NavLink to='/dash/payment-history' className={({isActive})=> isActive ? 'text-blue-400' : ''}> <FaHistory></FaHistory> Payment History</NavLink></li>
                             </>
                         }
                        

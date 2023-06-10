@@ -14,7 +14,8 @@ const Payment = () => {
     const classes = getSelectedClasses(user?.email);
     const [eachClass] = classes.filter(each =>each._id == id );
     const price = eachClass?.fee;
-    console.log('payment com', price, eachClass)
+    console.log('payment com', price, eachClass);
+    
     return (
         <div className='w-full h-full p-20'>
             <DivTitle title={'payment'}></DivTitle>
