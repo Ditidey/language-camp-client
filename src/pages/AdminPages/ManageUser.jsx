@@ -24,7 +24,7 @@ const ManageUser = () => {
               
             <div className="overflow-x-auto">
                 <table className="table">
-                    <thead>
+                    <thead className='text-xl text-purple-950 font-mono bg-purple-50'>
                         <tr>
                             <th>Photo</th>
                             <th>Name</th>
@@ -46,12 +46,12 @@ const ManageUser = () => {
                                 </td>
                                 <td>{student.name}</td>
                                 <td>{student.email}</td>
-                                <td className='uppercase shadow-sm'>{student.status || 'User'}</td>
+                                <td className='uppercase shadow-sm'>{student.status || 'Student'}</td>
                                 <th>
-                                    <button disabled={student.status} onClick={()=>handleAdmin(student)} className="btn btn-ghost bg-purple-800 text-blue-100 btn-xs">Admin</button>
+                                    <button disabled={student.status} onClick={()=>handleAdmin(student)} className="btn btn-ghost bg-purple-800 text-blue-100 btn-xs ms-5">Admin</button>
                                 </th>
                                 <th>
-                                    <button disabled={student.status} onClick={()=>handleInstructor(student)} className="btn btn-ghost bg-purple-800 text-blue-100 btn-xs">Instructor</button>
+                                    <button disabled={student.status} onClick={()=>handleInstructor(student)} className="btn btn-ghost bg-purple-800 text-blue-100 btn-xs mx-10">Instructor</button>
                                 </th>
                             </tr>
                             )

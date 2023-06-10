@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Lottie from "lottie-react";
 import loginAnimation from '../../../public/VJMz4ldy4k.json';
 import { useForm } from "react-hook-form";
@@ -9,7 +9,9 @@ import SocialLogin from './SocialLogin';
 
 const Login = () => {
     const {loginUser} = useContext(contextProvider);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
     const onSubmit = data => {
@@ -23,7 +25,7 @@ const Login = () => {
                 timer: '1500',
                 showConfirmButton: false
               })
-            navigate('/')
+            navigate(from, {replace: true})
         }
         )
         .catch(error => console.log(error.message))

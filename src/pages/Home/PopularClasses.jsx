@@ -52,11 +52,12 @@ const PopularClasses = () => {
                 ref={cardRef}
             > 
             {
-                selects.slice(0, 5).map(select =>
+                selects.slice(0, 6).map(select =>
                  <SwiperSlide key={select._id} className='py-10' > 
                     <div className='px-5'  >
                         <img src={select.class_image} alt="" className='w-full h-[200px] rounded-xl'/>
-                        <p className='text-xl font-serif font-bold mt-3 ms-4'>{select.class_name}</p>
+                        <p className='text-xl text-center font-serif font-bold mt-3 ms-3'>{select.class_name}</p>
+                        <p className='text-lg text-center font-serif mt-3 ms-3'>Instructor: {select.teacher_name}</p>
                     </div>
                 </SwiperSlide>)
             }

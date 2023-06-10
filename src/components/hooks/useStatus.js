@@ -7,7 +7,7 @@ const useStatus = () => {
   const {user} = useContext(contextProvider);
   const [axiosFetch] = useAxios();
 
-  const {data: status} = useQuery({
+  const {data: status, isLoading: isStatusLoading} = useQuery({
     queryKey: ['status', user?.email],
     queryFn: async ()=>{
         const res = await axiosFetch.get(`/students/${user?.email}`)
@@ -16,7 +16,7 @@ const useStatus = () => {
     }
   });
 
-  return [status]
+  return [status, isStatusLoading]
 };
 
 export default useStatus;

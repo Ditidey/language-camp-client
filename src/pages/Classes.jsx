@@ -36,7 +36,7 @@ const Classes = () => {
     return (
         <div className='pt-28 w-full'>
             <hr className='w-1/3 mx-auto border-purple-600 border-2' />
-            <p className='text-center text-3xl font-serif my-3'> Total {classes.length} classes</p>
+            <p className='text-center text-3xl font-serif my-3'> Total {classes.length} courses available</p>
             <hr className='w-1/3 mx-auto border-purple-600 border-2' />
 
             <div className='px-10 pt-10 pb-20 grid md:grid-cols-2 lg:grid-cols-3 gap-5'>

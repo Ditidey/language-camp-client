@@ -1,11 +1,11 @@
 import Swal from "sweetalert2";
 import useAxios from '../../components/hooks/useAxios';
-import { useQuery } from "react-query";
-
-const [axiosFetch] = useAxios()
  
 
-export const makeAdmin = student =>{
+const [axiosFetch] = useAxios()
+
+
+export const makeAdmin = student => {
     const adminUsers = {
         email: student.email,
         name: student.displayName,
@@ -19,23 +19,23 @@ export const makeAdmin = student =>{
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Yes, Make admin!'
-      }).then((result) => {
+    }).then((result) => {
         if (result.isConfirmed) {
             axiosFetch.put(`/students/${student.email}`, adminUsers)
-            .then(res => {
-                console.log(res);                   
-                if(res.data.modifiedCount > 0){  
-                                   
-                    Swal.fire(
-                        'Admin!', 
-                        'success'
-                      )
-                }
-            })
+                .then(res => {
+                    console.log(res);
+                    if (res.data.modifiedCount > 0) {
+
+                        Swal.fire(
+                            'Admin!',
+                            'success'
+                        )
+                    }
+                })
         }
-    })      
+    })
 }
-export const makeInstructor = student =>{
+export const makeInstructor = student => {
     const adminUsers = {
         email: student.email,
         name: student.displayName,
@@ -49,25 +49,25 @@ export const makeInstructor = student =>{
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Yes, Make instructor!'
-      }).then((result) => {
+    }).then((result) => {
         if (result.isConfirmed) {
             axiosFetch.put(`/students/${student.email}`, adminUsers)
-            .then(res => {
-                console.log(res);                   
-                if(res.data.modifiedCount > 0){  
-                                   
-                    Swal.fire(
-                        'Instructor!', 
-                        'success'
-                      )
-                }
-            })
+                .then(res => {
+                    console.log(res);
+                    if (res.data.modifiedCount > 0) {
+
+                        Swal.fire(
+                            'Instructor!',
+                            'success'
+                        )
+                    }
+                })
         }
-    })      
+    })
 }
- 
-export const statusApprove = each =>{
-    const adminUpdate = {       
+
+export const statusApprove = each => {
+    const adminUpdate = {
         status: 'approve'
     }
     Swal.fire({
@@ -77,24 +77,24 @@ export const statusApprove = each =>{
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Yes, Approve!'
-      }).then((result) => {
+    }).then((result) => {
         if (result.isConfirmed) {
             axiosFetch.patch(`/classes/${each._id}`, adminUpdate)
-            .then(res => {
-                console.log(res);                   
-                if(res.data.modifiedCount > 0){ 
-                                   
-                    Swal.fire(
-                        'Approved!', 
-                        'success'
-                      )
-                }
-            })
+                .then(res => {
+                    console.log(res);
+                    if (res.data.modifiedCount > 0) {
+
+                        Swal.fire(
+                            'Approved!',
+                            'success'
+                        )
+                    }
+                })
         }
-    })      
+    })
 }
-export const statusDeny = each =>{
-    const adminUpdate = {       
+export const statusDeny = each => {
+    const adminUpdate = {
         status: 'deny'
     }
     Swal.fire({
@@ -104,19 +104,39 @@ export const statusDeny = each =>{
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Yes, Deny!'
-      }).then((result) => {
+    }).then((result) => {
         if (result.isConfirmed) {
             axiosFetch.patch(`/classes/${each._id}`, adminUpdate)
-            .then(res => {
-                console.log(res);                   
-                if(res.data.modifiedCount > 0){ 
-                                   
-                    Swal.fire(
-                        'Denied!', 
-                        'success'
-                      )
-                }
-            })
+                .then(res => {
+                    console.log(res);
+                    if (res.data.modifiedCount > 0) {
+
+                        Swal.fire(
+                            'Denied!',
+                            'success'
+                        )
+                    }
+                })
         }
-    })      
+    })
+}
+
+export const sendFeedback = (id, feedback) => {
+    const addFeedback = { feedback: feedback };
+     fetch(`http://localhost:5000/classes/${id}`,
+     {
+        method: 'PUT',
+        headers: {'content-type': 'application/json'},
+        body: JSON.stringify(addFeedback)
+     }  )
+        .then(res => res.json())
+        .then(data =>{
+            if (data.modifiedCount > 0) {
+
+                Swal.fire(
+                    'Sended Feedback!',
+                    'success'
+                )
+            }
+        })
 }

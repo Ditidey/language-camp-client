@@ -17,6 +17,10 @@ import ProfileInstructor from "../pages/InstructorPages/ProfileInstructor";
 import SelectedClasses from "../pages/UserPages/SelectedClasses";
 import EnrolledClasses from "../pages/UserPages/EnrolledClasses";
 import UserPro from "../pages/UserPages/UserPro";
+import AdminRoute from "./AdminRoute";
+import InstructorRoute from "./InstructorRoute";
+import UpdateClass from "../pages/InstructorPages/UpdateClass";
+import Payment from "../pages/UserPages/Payment";
 
 const router = createBrowserRouter([
     {
@@ -53,28 +57,35 @@ const router = createBrowserRouter([
         children: [
                 {
                    path: 'admin-profile',
-                   element: <AdminProfile></AdminProfile>
+                   element:  <AdminRoute><AdminProfile></AdminProfile></AdminRoute>
                 },
                 {
                     path: 'class-manage',
-                    element: <ClassManage></ClassManage>
+                    element:  <AdminRoute><ClassManage></ClassManage></AdminRoute>
                 },
                 {
                     path: 'manage-user',
-                    element:<ManageUser></ManageUser>
+                    element: <AdminRoute><ManageUser></ManageUser></AdminRoute>
                 },
+                // instructors routes
                 {
                     path: 'teacher-profile',
-                    element: <ProfileInstructor></ProfileInstructor>
+                    element:  <InstructorRoute><ProfileInstructor></ProfileInstructor></InstructorRoute>
                 },
                 {
                     path: 'my-classes',
-                    element: <InstructorClasses></InstructorClasses>
+                    element:  <InstructorRoute><InstructorClasses></InstructorClasses></InstructorRoute>
                 },
                 {
                     path: 'class-add',
-                    element: <AddClass></AddClass>
+                    element: <InstructorRoute><AddClass></AddClass></InstructorRoute>
                 },
+                {
+                    path: 'update-class/:id',
+                    element:<InstructorRoute><UpdateClass></UpdateClass></InstructorRoute>,
+                    // loader: ({params})=>fetch(`http://localhost:5000/classes/${params.id}`)
+                },
+                // students routes
                 {
                     path: 'select-classes',
                     element: <SelectedClasses></SelectedClasses>
@@ -86,6 +97,10 @@ const router = createBrowserRouter([
                 {
                     path: 'user-profile',
                     element: <UserPro></UserPro>
+                },
+                {
+                    path: 'payment/:id',
+                    element: <Payment></Payment>
                 }
         ]
     }

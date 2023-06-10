@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { getClasses } from '../../components/api-calls/apiCalls';
 import { FaEdit } from 'react-icons/fa';
-import useAxios from '../../components/hooks/useAxios';
-import { statusApprove, statusDeny } from '../../components/api-calls/adminApi';
+import { sendFeedback, statusApprove, statusDeny } from '../../components/api-calls/adminApi';
+ 
 
 const ClassManage = () => {
     const [classes] = getClasses();
-    const [opinion, setOpinion] = useState('')
+    const [selectedClassId, setSelectedClassId] = useState({})
+
     const handleApprove = (each) => {
         statusApprove(each);
     }
@@ -14,21 +15,14 @@ const ClassManage = () => {
         statusDeny(each);
     }
     const handleFeedback = (each) =>{
+        setSelectedClassId(each._id)
         window.my_modal_1.showModal()
-            
-        if(opinion !== ''){
-            console.log('from feedback',opinion)
-        }
          
-        //  event.preventDefault();
-        //   const feedback = event.target.feedback.value;
-        //  console.log(event.target.feedback.value)
-        //  console.log(event.target.value)
     }
      const handleModal = event =>{
+
         const feedback = event.target.feedback.value;
-        console.log(feedback)
-         setOpinion(feedback);
+        sendFeedback(selectedClassId, feedback);       
          event.target.reset();
      }
     return (

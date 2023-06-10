@@ -3,6 +3,7 @@ import { getClasses  } from '../../components/api-calls/apiCalls';
 import { FaEdit } from 'react-icons/fa';
 import { useContext } from 'react';
 import { contextProvider } from '../../AuthProvider';
+import { Link } from 'react-router-dom';
 
 const InstructorClasses = () => {
     const {user} = useContext(contextProvider);
@@ -39,8 +40,8 @@ const InstructorClasses = () => {
                             <td className='text-center'>{each.seat}</td>
                             <td className='text-center'>{each.students || 0}</td>
                             <td>{each.status}</td>
-                            <td>{each.feedback || 'No feedback for it'}</td>
-                            <th><button className='btn bg-purple-800 text-blue-100'><FaEdit className='text-purple-100'></FaEdit>Edit</button></th>
+                            <td>{each.feedback || 'No feedback'}</td>
+                            <th> <button className='btn bg-purple-800 text-blue-100'><FaEdit className='text-purple-100'></FaEdit><Link to={`/dash/update-class/${each._id}`}>Edit</Link></button></th>
                         </tr>)
                           }
                     </tbody>

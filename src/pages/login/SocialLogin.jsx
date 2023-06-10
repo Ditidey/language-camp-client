@@ -2,11 +2,13 @@ import React, { useContext, useState } from 'react';
 import { contextProvider } from '../../AuthProvider';
 import { FaGoogle } from 'react-icons/fa';
 import { saveStudents } from '../../components/api-calls/apiCalls';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 const SocialLogin = () => {
     const { googleLogin } = useContext(contextProvider);
     const [err, setErr] = useState('');
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     const handleGoogle = () => {
             googleLogin()
@@ -18,7 +20,7 @@ const SocialLogin = () => {
                     photo: result.user.photoURL
                 }
                 saveStudents(googleuser);
-                navigate('/')
+                navigate(from, {replace: true})
             })
             .catch(error => setErr(error.message))
     }

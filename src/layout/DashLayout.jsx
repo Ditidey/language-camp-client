@@ -9,12 +9,15 @@ import useStatus from '../components/hooks/useStatus';
 import logo from '../../public/logo.png'
 
 const DashLayout = () => {
-    const {user} = useContext(contextProvider);
+    const {user, logoutUser} = useContext(contextProvider);
     useTitle('Dashboard');
     const [status] = useStatus();
     //  console.log(status)
-   
-    const isInstructors = false;
+    const handleLogout = ()=>{
+        logoutUser()
+        .then(()=>{})
+        .catch(()=>{})
+    }
     return (
         <div className='px-10'>
             <div className="drawer lg:drawer-open">
@@ -61,7 +64,7 @@ const DashLayout = () => {
                         <li><NavLink to='/' className={({isActive})=> isActive ? 'text-blue-400' : ''}><FaHome></FaHome>Home</NavLink></li>
                         <li><NavLink to='/classes' className={({isActive})=> isActive ? 'text-blue-400' : ''}><FaSchool></FaSchool>  Classes</NavLink></li>
                         <li><NavLink to='/instructors' className={({isActive})=> isActive ? 'text-blue-400' : ''}><FaUserCheck></FaUserCheck>Instructors</NavLink></li>
-                        <button className='bg-purple-50 p-5 text-blue-900 uppercase mt-40'>Log out</button>
+                        <button onClick={handleLogout} className='bg-purple-50 p-5 text-blue-900 uppercase mt-40'>Log out</button>
                         
                     </ul>
 

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Lottie from "lottie-react";
 import loginAnimation from '../../../public/VJMz4ldy4k.json';
 import { useForm } from "react-hook-form";
@@ -11,6 +11,8 @@ import { saveStudents } from '../../components/api-calls/apiCalls';
 const Register = () => {
     const { registerUser, updateUser } = useContext(contextProvider);
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [error, setError] = useState('');
 
@@ -42,7 +44,7 @@ const Register = () => {
                     showConfirmButton: false
                 })
                 saveStudents(students)
-                navigate('/')
+                navigate(from, {replace: true})
             }
             )
             .catch(error => {
