@@ -2,7 +2,7 @@ import anime from 'animejs';
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import DivTitle from '../../components/shared/DivTitle';
-
+import { Typewriter } from 'react-simple-typewriter';
 const About = () => {
     const cardRef = useRef(null)
     useEffect(() => {
@@ -25,7 +25,16 @@ const About = () => {
 
              <div className='bg-purple-800 text-white text-left ps-20 md:absolute  p-10 top-[15%] left-[50%] md:h-[500px] h-[700px] md:w-[700px] mb-40 md:mb-2'>
                 <p className='text-blue-300 my-4'>Explore Global Talk</p>
-                <h2 className='text-5xl font-extralight mb-10'>Enroll interactive <br /> facilitators in just a <br /> few clicks </h2>
+                <h2 className='text-5xl font-extralight mb-10'>
+                Enroll <br /> interactive facilitators <br />
+                <Typewriter
+                words={[ ' in just a few clicks']}
+                loop={15}
+                delaySpeed={3000}
+                typeSpeed={90}
+                
+            ></Typewriter>
+                      </h2>
                 <p className='my-4'>Global Talk is a interactive, student-friendly company which offers international language expertise services. We have experienced team, flexible prices, and international quality certification.</p>
                 <button className='uppercase bg-purple-950 text-blue-100 p-5 mt-8'><Link to='/instructors'>Learn More</Link> </button>
              </div>
