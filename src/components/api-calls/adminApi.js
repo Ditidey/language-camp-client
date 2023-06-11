@@ -123,7 +123,7 @@ export const statusDeny = (each,refetch) => {
 
 export const sendFeedback = (id, feedback) => {
     const addFeedback = { feedback: feedback };
-     fetch(`http://localhost:5000/classes/${id}`,
+     fetch(`https://language-camp-server.vercel.app/classes/${id}`,
      {
         method: 'PUT',
         headers: {'content-type': 'application/json'},

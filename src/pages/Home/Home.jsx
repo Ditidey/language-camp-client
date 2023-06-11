@@ -4,8 +4,10 @@ import PopularClasses from './PopularClasses';
 import PopularInstruc from './PopularInstruc';
 import About from './About';
 import { useState } from 'react';
+import useTitle from '../../components/hooks/useTitle';
 
 const Home = () => {
+    useTitle('Home')
     const [dark, setDark] = useState(false);
     console.log(dark)
     return (

@@ -28,7 +28,7 @@ const PayMentForm = ({ eachClass, price }) => {
                     console.log(res.data.clientSecret)
                     setClientSecret(res.data.clientSecret)
                 })
-            // fetch('http://localhost:5000/create-payment', {
+            // fetch('https://language-camp-server.vercel.app/create-payment', {
             //     method: 'POST',
             //     headers: { 'content-type': 'application/json' },
             //     body: JSON.stringify({ price })
@@ -95,7 +95,7 @@ const PayMentForm = ({ eachClass, price }) => {
                 teacher_email: eachClass.teacher_email,
                 students: eachClass.students + 1 || 1,
             }
-            fetch('http://localhost:5000/payment',{
+            fetch('https://language-camp-server.vercel.app/payment',{
                 method: 'POST',
                 headers: {'content-type': 'application/json'},
                 body: JSON.stringify(payDetails)

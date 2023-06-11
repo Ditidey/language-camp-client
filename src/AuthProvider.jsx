@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import app from './firebase.config';
+import axios from 'axios';
 import {GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile} from 'firebase/auth';
 
 export const contextProvider = createContext();
@@ -35,7 +36,22 @@ const AuthProvider = ({children}) => {
     useEffect(()=>{
         const unsubscribe = onAuthStateChanged(auth, currentUser=>{
             setUser(currentUser);
-            setLoading(false);
+
+            if (currentUser) {
+                axios.post('https://language-camp-server.vercel.app/jwt', { email: currentUser.email })
+                    .then(data => {
+                        // console.log(data)
+                        localStorage.setItem('camp-access-token', data.data.token);
+                        setLoading(false)
+                    }
+                    )
+
+            }
+            else {
+                localStorage.removeItem('camp-access-token')
+                setLoading(false)
+            }
+            setLoading(false)
         });
         return() =>{
                return unsubscribe();

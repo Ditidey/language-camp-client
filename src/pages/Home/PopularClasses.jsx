@@ -27,7 +27,7 @@ const PopularClasses = () => {
         [])
     useEffect(() => {
         console.log(students)
-        fetch(`http://localhost:5000/classes?students=${students}`)
+        fetch(`https://language-camp-server.vercel.app/classes?students=${students}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data)

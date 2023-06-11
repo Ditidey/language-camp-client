@@ -12,7 +12,7 @@ export const enrolledClasses = (selectClass)=>{
            students: count,
     }
    
-    fetch(`http://localhost:5000/classes/${selectClass.class_id}`,{
+    fetch(`https://language-camp-server.vercel.app/classes/${selectClass.class_id}`,{
         method: 'PUT',
         headers: {'content-type': 'application/json'},
         body: JSON.stringify(updatedClassInfo)
@@ -33,7 +33,7 @@ export const enrolledSelectedClasses = (selectClass)=>{
         //    students: studentCount,
     }
     // const enroll = {enroll: 'yes'}
-    fetch(`http://localhost:5000/selected-classes/${selectClass.class_id}`,{
+    fetch(`https://language-camp-server.vercel.app/selected-classes/${selectClass.class_id}`,{
         method: 'PUT',
         headers: {'content-type': 'application/json'},
         body: JSON.stringify(updatedClassInfo)
@@ -56,7 +56,7 @@ export const addSelectedClass = (eachClass, user)=>{
         select: 'yes',
         student_email: user?.email,
     }
-    fetch(`http://localhost:5000/selected-classes`,{
+    fetch(`https://language-camp-server.vercel.app/selected-classes`,{
         method: 'POST',
         headers: {'content-type': 'application/json'},
         body: JSON.stringify(selectedClass)
@@ -77,7 +77,7 @@ export const addSelectedClass = (eachClass, user)=>{
 
 export const getSelectedClasses = email =>{
     const [selected, setSelected] = useState([])
-    fetch(`http://localhost:5000/selected-classes?email=${email}`)
+    fetch(`https://language-camp-server.vercel.app/selected-classes?email=${email}`)
     .then(res => res.json())
     .then(data =>{
         // console.log(data)
@@ -87,7 +87,7 @@ export const getSelectedClasses = email =>{
 }
 
 export const deleteClass = id =>{
-    fetch(`http://localhost:5000/selected-classes/${id}`, {
+    fetch(`https://language-camp-server.vercel.app/selected-classes/${id}`, {
         method: 'DELETE'
     })
     .then(res => res.json())

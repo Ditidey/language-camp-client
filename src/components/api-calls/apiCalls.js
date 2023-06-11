@@ -2,7 +2,7 @@ import { useQuery } from "react-query"
 import useAxios from "../hooks/useAxios"
 
 export const saveStudents = students =>{
-    fetch(`http://localhost:5000/students/${students.email}`,{
+    fetch(`https://language-camp-server.vercel.app/students/${students.email}`,{
         method: 'PUT',
         headers: {'content-type': 'application/json'},
         body: JSON.stringify(students)

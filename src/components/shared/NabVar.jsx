@@ -24,6 +24,7 @@ const NabVar = () => {
                       <p><NavLink to='/' className={({isActive})=> isActive ? 'text-blue-800' : 'text-black'}>Home</NavLink></p>
                       <p><NavLink to='/instructors' className={({isActive})=> isActive ? 'text-blue-800' : 'text-black'}>Instructors</NavLink></p>
                       <p><NavLink to='classes' className={({isActive})=> isActive ? 'text-blue-800' : 'text-black'}>Classes</NavLink></p>
+                       
                 </div>
                 <div className='md:ms-32 flex'>
                     {

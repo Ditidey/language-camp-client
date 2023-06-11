@@ -84,7 +84,7 @@ const router = createBrowserRouter([
                 {
                     path: 'update-class/:id',
                     element:<InstructorRoute><UpdateClass></UpdateClass></InstructorRoute>,
-                    // loader: ({params})=>fetch(`http://localhost:5000/classes/${params.id}`)
+                    // loader: ({params})=>fetch(`https://language-camp-server.vercel.app/classes/${params.id}`)
                 },
                 // students routes
                 {

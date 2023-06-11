@@ -7,8 +7,11 @@ import {MdPlaylistAdd, MdCollectionsBookmark, MdSupervisedUserCircle, MdVerified
 import { contextProvider } from '../AuthProvider';
 import useStatus from '../components/hooks/useStatus';
 import logo from '../../public/logo.png'
+import { useState } from 'react';
 
 const DashLayout = () => {
+    useTitle('dashboard')
+    const [dark, setDark] = useState(false);
     const {user, logoutUser} = useContext(contextProvider);
     useTitle('Dashboard');
     const [status] = useStatus();
@@ -19,7 +22,11 @@ const DashLayout = () => {
         .catch(()=>{})
     }
     return (
-        <div className='px-10'>
+        <div className={dark ? 'bg-black text-white  ' : ''}>
+             <div className=' mt-5  shadow-2xl w-20 absolute md:end-20 md:top-4 z-20'>
+                <label htmlFor="" className='text-black'>Dark Mood</label>
+                <button onClick={() => setDark(!dark)} className='toggle ms-3'></button>
+            </div>
             <div className="drawer lg:drawer-open">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col items-center justify-center">    

@@ -16,7 +16,7 @@ const PopularInstruc = () => {
     },
         [])
     useEffect(() => {
-        fetch('http://localhost:5000/students')
+        fetch('https://language-camp-server.vercel.app/students')
             .then(res => res.json())
             .then(data => {
                 const teachers = data.filter(each => each.status == 'instructor')

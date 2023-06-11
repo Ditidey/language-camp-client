@@ -4,15 +4,18 @@ import { addSelectedClass } from '../components/api-calls/studentApi';
 import { contextProvider } from '../AuthProvider';
 import { Navigate, useLocation } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import useTitle from '../components/hooks/useTitle';
 
 const Classes = () => {
+    useTitle('Classes')
+    const [dark, setDark] = useState(false);
     const [classes, setClasses] = useState([]);
     const [status] = useStatus();
-    const {user} = useContext(contextProvider); 
-     const location = useLocation()
+    const { user } = useContext(contextProvider);
+    const location = useLocation()
 
     useEffect(() => {
-        fetch('http://localhost:5000/classes')
+        fetch('https://language-camp-server.vercel.app/classes')
             .then(res => res.json())
             .then(data => {
                 const classes = data.filter(each => each.status == 'approve')
@@ -21,7 +24,7 @@ const Classes = () => {
     }, [])
 
     const handleSelect = eachClass => {
-        if(!user){
+        if (!user) {
             Swal.fire({
                 title: 'Login',
                 text: 'Login First',
@@ -29,12 +32,17 @@ const Classes = () => {
                 icon: 'warning',
                 showConfirmButton: false,
             })
-           return <Navigate to='/login' state={{from:location}} replace></Navigate>
+            return <Navigate to='/login' state={{ from: location }} replace></Navigate>
         }
-       addSelectedClass(eachClass, user)
+        addSelectedClass(eachClass, user)
     }
     return (
-        <div className='pt-28 w-full'>
+        <div className={dark ? 'bg-black text-white pt-28 w-full relative' : ' pt-28 w-full relative'}>
+            <div className='ms-5 shadow-2xl w-20 absolute md:end-44 md:top-4 z-20'>
+                <label htmlFor="" className='text-black'>Dark Mood</label>
+                <button onClick={() => setDark(!dark)} className='toggle ms-3'></button>
+            </div>
+
             <hr className='w-1/3 mx-auto border-purple-600 border-2' />
             <p className='text-center text-3xl font-serif my-3'> Total {classes.length} courses available</p>
             <hr className='w-1/3 mx-auto border-purple-600 border-2' />
