@@ -10,5 +10,6 @@
 * Only instructor can add classes. Also can update classes according to feedback on necessary from instructor's dashboard. And can see booked classes.
 
 ### Used:
-* Tools: Firebase, Vercel, 
-* react sweetalart, swiper autoplay, react-icons, react anime, react hook form, react aos, react spinner, react typewriter, react zoom, react stripe js.
+* JavaScript, React.js, Express.js, Tailwind, DaisyUI, 
+* Tools: Firebase, Vercel, MongoDB 
+* Packages: react sweetalart, swiper autoplay, react-icons, react anime, react hook form, react aos, react spinner, react typewriter, react zoom, react stripe js.
