@@ -24,7 +24,7 @@ const DashLayout = () => {
     return (
         <div className={dark ? 'bg-black text-white  ' : ''}>
              <div className=' mt-5  shadow-2xl w-20 absolute md:end-20 md:top-4 z-20'>
-                <label htmlFor="" className='text-black'>Dark Mood</label>
+                <label htmlFor="" className='text-black'>Dark Mode</label>
                 <button onClick={() => setDark(!dark)} className='toggle ms-3'></button>
             </div>
             <div className="drawer lg:drawer-open">

@@ -13,12 +13,14 @@ const SocialLogin = () => {
     const handleGoogle = () => {
             googleLogin()
             .then(result =>{
-                console.log(result.user)
+                console.log('result',result.user)
+                
                 const googleuser = {
                     email: result.user.email,
                     name: result.user.displayName,
                     photo: result.user.photoURL
                 }
+                console.log(googleuser)
                 saveStudents(googleuser);
                 navigate(from, {replace: true})
             })
