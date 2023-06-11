@@ -5,7 +5,7 @@ import useAxios from '../../components/hooks/useAxios';
 const [axiosFetch] = useAxios()
 
 
-export const makeAdmin = student => {
+export const makeAdmin = (student, refetch) => {
     const adminUsers = {
         email: student.email,
         name: student.displayName,
@@ -25,7 +25,7 @@ export const makeAdmin = student => {
                 .then(res => {
                     console.log(res);
                     if (res.data.modifiedCount > 0) {
-
+                        refetch();
                         Swal.fire(
                             'Admin!',
                             'success'
@@ -35,7 +35,7 @@ export const makeAdmin = student => {
         }
     })
 }
-export const makeInstructor = student => {
+export const makeInstructor = (student, refetch) => {
     const adminUsers = {
         email: student.email,
         name: student.displayName,
@@ -55,7 +55,7 @@ export const makeInstructor = student => {
                 .then(res => {
                     console.log(res);
                     if (res.data.modifiedCount > 0) {
-
+                         refetch()
                         Swal.fire(
                             'Instructor!',
                             'success'
@@ -66,7 +66,7 @@ export const makeInstructor = student => {
     })
 }
 
-export const statusApprove = each => {
+export const statusApprove = (each, refetch) => {
     const adminUpdate = {
         status: 'approve'
     }
@@ -83,7 +83,7 @@ export const statusApprove = each => {
                 .then(res => {
                     console.log(res);
                     if (res.data.modifiedCount > 0) {
-
+                        refetch();
                         Swal.fire(
                             'Approved!',
                             'success'
@@ -93,7 +93,7 @@ export const statusApprove = each => {
         }
     })
 }
-export const statusDeny = each => {
+export const statusDeny = (each,refetch) => {
     const adminUpdate = {
         status: 'deny'
     }
@@ -110,7 +110,7 @@ export const statusDeny = each => {
                 .then(res => {
                     console.log(res);
                     if (res.data.modifiedCount > 0) {
-
+                        refetch()
                         Swal.fire(
                             'Denied!',
                             'success'

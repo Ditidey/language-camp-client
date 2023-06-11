@@ -5,8 +5,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { contextProvider } from '../../AuthProvider';
 import Swal from 'sweetalert2';
-import { enrolledClasses, enrolledSelectedClasses } from '../../components/api-calls/studentApi';
-// import useAxios from '../../components/hooks/useAxios';
+import useAxios from '../../components/hooks/useAxios';
 
 const PayMentForm = ({ eachClass, price }) => {
     const stripe = useStripe();
@@ -16,28 +15,28 @@ const PayMentForm = ({ eachClass, price }) => {
     const [processing, setProcessing] = useState(false);
     const [success, setSuccess] = useState('');
     const { user } = useContext(contextProvider);
-    // const [axiosFetch] = useAxios();
+    const [axiosFetch] = useAxios();
     // const price = eachClass.price;
-    console.log(price, eachClass)
+    // console.log(price, eachClass)
 
     
         useEffect(() => {
             console.log('use effect ...', price)
           if(price > 0){
-               // axiosFetch.post('/create-payment', { price })
-            //     .then(res => {
-            //         console.log(res.data.clientSecret)
-            //         setClientSecret(res.data.clientSecret)
-            //     })
-            fetch('http://localhost:5000/create-payment', {
-                method: 'POST',
-                headers: { 'content-type': 'application/json' },
-                body: JSON.stringify({ price })
-            }).then(res => res.json())
-                .then(data => {
-                    console.log(data.clientSecret)
-                    setClientSecret(data.clientSecret)
+               axiosFetch.post('/create-payment', { price })
+                .then(res => {
+                    console.log(res.data.clientSecret)
+                    setClientSecret(res.data.clientSecret)
                 })
+            // fetch('http://localhost:5000/create-payment', {
+            //     method: 'POST',
+            //     headers: { 'content-type': 'application/json' },
+            //     body: JSON.stringify({ price })
+            // }).then(res => res.json())
+            //     .then(data => {
+            //         console.log(data.clientSecret)
+            //         setClientSecret(data.clientSecret)
+            //     })
           }
         }, [price])
   
@@ -53,7 +52,7 @@ const PayMentForm = ({ eachClass, price }) => {
             return
         }
         // console.log(card)
-        const { error, paymentMethod } = await stripe.createPaymentMethod({
+        const { error } = await stripe.createPaymentMethod({
             type: 'card',
             card
         })
@@ -92,7 +91,7 @@ const PayMentForm = ({ eachClass, price }) => {
                 fee: price,
                 date: new Date(),
                 seat: eachClass.seat - 1,
-                student_email: user.email,
+                student_email: eachClass.student_email,
                 teacher_email: eachClass.teacher_email,
                 students: eachClass.students + 1 || 1,
             }
@@ -102,13 +101,13 @@ const PayMentForm = ({ eachClass, price }) => {
                 body: JSON.stringify(payDetails)
             }).then(res=>res.json())
             .then(data=>{
-                if(data.insertedId){
+                
+                if(data.insertedId || modifiedCount > 0){
                     Swal.fire(
                         'Payment done'
                     )
                 }
-                enrolledClasses(eachClass);
-                enrolledSelectedClasses(eachClass);
+               
             })
         }
     }

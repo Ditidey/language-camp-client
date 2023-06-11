@@ -5,16 +5,14 @@ import Swal from 'sweetalert2';
 import { makeAdmin, makeInstructor } from '../../components/api-calls/adminApi';
 
 const ManageUser = () => {
-    const [students] = getStudents();
-     
-     const [admin, setAdmin] = useState('');
+    const [students, refetch] = getStudents();
 
     const handleAdmin =(student)=>{
-         makeAdmin(student)
+         makeAdmin(student, refetch)
     }
 
     const handleInstructor = (student) =>{
-        makeInstructor(student)
+        makeInstructor(student, refetch)
     }
     return (
         <div className='w-full p-10'>

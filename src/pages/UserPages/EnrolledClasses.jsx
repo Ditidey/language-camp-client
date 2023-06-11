@@ -1,27 +1,26 @@
 import React, { useContext } from 'react';
-import { getSelectedClasses } from '../../components/api-calls/studentApi';
 import { contextProvider } from '../../AuthProvider';
 import useAxios from '../../components/hooks/useAxios';
 import { useQuery } from 'react-query';
+// import { useEffect } from 'react';
 
 const EnrolledClasses = () => {
     const { user } = useContext(contextProvider);
-    const selectedClasses = getSelectedClasses(user?.email);
-    const enrolledClasses = selectedClasses.filter(select => select.enroll == 'yes');
-
     const [axiosFetch] = useAxios();
-
+    console.log(user.email)
+   
     const {data: classes=[], refetch} = useQuery({
         queryKey: ['payment'],
         queryFn: async ()=>{
-            const res = await axiosFetch.get(`/get-payment?email=${user?.email}`)         
+            const res = await axiosFetch.get(`/get-payment?email=${user?.email}`)    
+            // console.log(res)     
             return res.data;
         }
     })
     return (
         <div className='w-full h-full p-10'>
             <hr className='w-2/3 ms-44 border-purple-600' />
-            <p className='text-center text-3xl font-serif my-2 uppercase'> Total {enrolledClasses.length} enrolled classes</p>
+            <p className='text-center text-3xl font-serif my-2 uppercase'> Total {classes.length} enrolled classes</p>
             <hr className='w-2/3 ms-44 border-purple-600 mb-10' />
 
             {

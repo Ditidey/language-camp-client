@@ -34,15 +34,4 @@ export const getClasses = ()=>{
     })
     return [classes, refetch];
 }
-// export const getEmailClasses = (email)=>{
-//     const [axiosFetch] = useAxios()
-//     const {data: classes =[], refetch} = useQuery({
-//         queryKey: ['classes'],
-//         queryFn: async ()=>{
-//             const res = await axiosFetch(`/classes?email=${email}`)
-//             console.log(res)
-//             return res.data;
-//         }
-//     })
-//     return [classes, refetch];
-// }
+ 

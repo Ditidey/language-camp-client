@@ -3,9 +3,9 @@ import Swal from "sweetalert2";
  
 export const enrolledClasses = (selectClass)=>{
     const number =  parseInt(selectClass.seat) - 1;
-    // console.log(number);
+    
     let count = parseInt(selectClass?.students || 0) + 1;
-    // const studentCount = count + 1;
+   
    const updatedClassInfo = {
            enroll: 'yes',
            seat: number,

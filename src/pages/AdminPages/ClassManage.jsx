@@ -3,16 +3,17 @@ import { getClasses } from '../../components/api-calls/apiCalls';
 import { FaEdit } from 'react-icons/fa';
 import { sendFeedback, statusApprove, statusDeny } from '../../components/api-calls/adminApi';
  
-
 const ClassManage = () => {
-    const [classes] = getClasses();
+    const [classes, refetch] = getClasses();
     const [selectedClassId, setSelectedClassId] = useState({})
 
     const handleApprove = (each) => {
-        statusApprove(each);
+        statusApprove(each, refetch);
+        refetch();
     }
     const handleDeny = each => {
-        statusDeny(each);
+        statusDeny(each, refetch);
+        refetch()
     }
     const handleFeedback = (each) =>{
         setSelectedClassId(each._id)

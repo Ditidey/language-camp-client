@@ -6,17 +6,12 @@ import { Link } from 'react-router-dom';
 
 const SelectedClasses = () => {
     const { user } = useContext(contextProvider);
-    const classes = getSelectedClasses(user?.email)
-    const selectedClasses = classes.filter(each => each.enroll != 'yes')
-
+    const selectedClasses = getSelectedClasses(user?.email)
+         
     const handleDelete = id => {
         deleteClass(id);
     }
 
-    // const handlePay = oneClass => {
-    //     enrolledClasses(oneClass);
-    //     enrolledSelectedClasses(oneClass);
-    // }
     return (
         <div className='pt-10 w-full h-full'>
             <hr className='w-2/3 ms-44 border-purple-600' />
@@ -41,7 +36,7 @@ const SelectedClasses = () => {
                                             <div className="card-actions flex justify-end mt-4">
                                                 <button onClick={() => handleDelete(each._id)} className="btn bg-yellow-500">Delete</button>
                                                 <button disabled={each.enroll == 'yes'} className="btn btn-primary bg-purple-800 px-7"><Link to={`/dash/payment/${each._id}`}>Pay</Link></button>
-                                                {/* <button disabled={each.enroll == 'yes'} onClick={() => handlePay(each)} className="btn btn-primary bg-purple-800 px-7">Pay</button> */}
+                                                 
                                             </div>
                                         </div>
                                     </div>
