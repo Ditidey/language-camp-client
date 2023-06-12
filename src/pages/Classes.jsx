@@ -5,6 +5,8 @@ import { contextProvider } from '../AuthProvider';
 import { Navigate, useLocation } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useTitle from '../components/hooks/useTitle';
+import anime from 'animejs';
+import { useRef } from 'react';
 
 const Classes = () => {
     useTitle('Classes')
@@ -13,6 +15,17 @@ const Classes = () => {
     const [status] = useStatus();
     const { user } = useContext(contextProvider);
     const location = useLocation()
+    const cardRef = useRef(null)
+    useEffect(() => {
+        anime({
+            targets: cardRef.current,
+            translateY: '-5vw',
+            duration: 6000,
+            // easing: 'easeInOutQuad',
+            loop: true,
+        })
+    },
+        [])
 
     useEffect(() => {
         fetch('https://language-camp-server.vercel.app/classes')
@@ -47,7 +60,7 @@ const Classes = () => {
             <p className='text-center text-3xl font-serif my-3'> Total {classes.length} courses available</p>
             <hr className='w-1/3 mx-auto border-purple-600 border-2' />
 
-            <div className='px-10 pt-10 pb-20 grid md:grid-cols-2 lg:grid-cols-3 gap-5'>
+            <div ref={cardRef} className='px-10 pt-10 pb-20 grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-20'>
                 {
                     classes.map(each =>
                         <div key={each._id} className={each.seat == 0 ? 'bg-red-300 card card-side' : 'card card-side bg-base-100 shadow-xl pe-2 w-[470px]'}>

@@ -30,8 +30,7 @@ const PopularClasses = () => {
         fetch(`https://language-camp-server.vercel.app/classes?students=${students}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data)
-                // const sortData = data.sort((a,b) => (a.students || '')  < (b.students || '')  ? -1 : 1)
+                console.log(data)              
                 setSelected(data)
             })
     }, [students])
