@@ -1,4 +1,5 @@
 import React from 'react';
+import { Typewriter } from 'react-simple-typewriter';
 
 const Faq = () => {
     return (
@@ -35,7 +36,16 @@ const Faq = () => {
                 </div>
             </div>
             <div className=' mx-2 px-5  '>
-                <p className='text-4xl font-serif font-bold p-6'>Our Learners</p>
+                <p className='text-4xl font-serif font-bold p-6 uppercase'>
+                <Typewriter
+                words={[ 'Our Learners']}
+                loop={15}
+                delaySpeed={3000}
+                typeSpeed={90}
+                cursor
+                cursorStyle='_'
+            ></Typewriter>
+                     </p>
                 <img className='mt-3 h-[350px] w-full hover:scale-120' src="https://media.istockphoto.com/id/865708776/photo/google-pins-on-a-world-map-with-flights-connexions.jpg?s=612x612&w=0&k=20&c=7Y7Ya5ZnqJ9vgloFccS7I8jBpTp7he3gcGpHqgfpFqo=" alt="" />
             </div>
         </div>
