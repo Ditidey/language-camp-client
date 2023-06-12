@@ -14,7 +14,7 @@ const NabVar = () => {
     }
 
     return (
-        <div className='navbar bg-white w-full fixed z-10  shadow-xl md:ps-20 '>
+        <div className='navbar bg-white w-full fixed z-10  shadow-xl md:ps-20 uppercase '>
             <div className='md:flex '>
                 <div className='md:flex md:ps-14 hidden md:p-4'>
                     <img src={logo} alt="" className='w-8 h-8'/>

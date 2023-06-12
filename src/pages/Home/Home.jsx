@@ -5,6 +5,7 @@ import PopularInstruc from './PopularInstruc';
 import About from './About';
 import { useState } from 'react';
 import useTitle from '../../components/hooks/useTitle';
+import Faq from './Faq';
 
 const Home = () => {
     useTitle('Home')
@@ -12,7 +13,7 @@ const Home = () => {
     console.log(dark)
     return (
         <div className={dark ? 'bg-black text-white pt-20 pb-10 relative' : ' pt-20 pb-10 relative'}>
-           <div className='ms-5 shadow-2xl w-20 absolute md:end-44 md:top-4 z-20'>
+           <div className='ms-5 shadow-2xl w-20 absolute md:end-20 uppercase text-sm md:top-4 z-20'>
               <label htmlFor="" className='text-black'>Dark Mode</label>
               <button onClick={()=>setDark(!dark)} className='toggle ms-3'></button>
            </div>
@@ -20,6 +21,7 @@ const Home = () => {
             <PopularClasses></PopularClasses>
             <PopularInstruc></PopularInstruc>
             <About></About>
+            <Faq></Faq>
         </div>
     );
 };
