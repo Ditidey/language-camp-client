@@ -27,7 +27,7 @@ const Instructors = () => {
     }, [])
     return (
         <div className={dark ? 'bg-black text-white pt-28 w-full relative' : ' pt-28 w-full relative'}>
-            <div className='ms-5 shadow-2xl w-20 absolute md:end-44 md:top-4 z-20'>
+            <div className='ms-5 shadow-2xl w-20 absolute md:end-20 md:top-4 z-20'>
                 <label htmlFor="" className='text-black'>Dark Mode</label>
                 <button onClick={() => setDark(!dark)} className='toggle ms-3'></button>
             </div>

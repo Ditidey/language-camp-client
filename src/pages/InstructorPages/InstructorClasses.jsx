@@ -17,7 +17,7 @@ const InstructorClasses = () => {
              <hr className='w-1/2 ms-56 border-purple-600 mb-10'/>
 
             {
-                classes.length > 0 &&  <div className="overflow-x-auto">
+                classes && Array.isArray(classes) && classes.length > 0 &&  <div className="overflow-x-auto">
                 <table className="table table-pin-rows table-pin-cols">
                     <thead>
                         <tr className='text-xl text-purple-950 font-mono bg-purple-50'>

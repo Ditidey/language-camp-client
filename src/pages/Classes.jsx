@@ -34,7 +34,7 @@ const Classes = () => {
                 const classes = data.filter(each => each.status == 'approve')
                 setClasses(classes)
             })
-    }, [])
+    }, [classes])
 
     const handleSelect = eachClass => {
         if (!user) {
@@ -51,7 +51,7 @@ const Classes = () => {
     }
     return (
         <div className={dark ? 'bg-black text-white pt-28 w-full relative' : ' pt-28 w-full relative'}>
-            <div className='ms-5 shadow-2xl w-20 absolute md:end-44 md:top-4 z-20'>
+            <div className='ms-5 shadow-2xl w-20 absolute md:end-20 md:top-4 z-20'>
                 <label htmlFor="" className='text-black'>Dark Mode</label>
                 <button onClick={() => setDark(!dark)} className='toggle ms-3'></button>
             </div>
@@ -69,7 +69,7 @@ const Classes = () => {
                                 <h2 className="card-title">{each.class_name}</h2>
                                 <p>Teacher: {each.teacher_name}</p>
                                 <p>Email: {each.teacher_email}</p>
-                                <p>Students: {each.students || 0}</p>
+                                {/* <p>Students: {each.students || 0}</p> */}
                                 <div className='flex'>
                                     <p className='me-4'>Seat: {each.seat}</p>
                                     <p>Price: ${each.fee}</p>
