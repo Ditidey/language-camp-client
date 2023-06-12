@@ -1,4 +1,4 @@
-import React, { useContext  } from 'react';
+import React, { useContext, useEffect, useRef  } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import useTitle from '../components/hooks/useTitle';
 import {SiGoogleclassroom} from 'react-icons/si'
@@ -8,6 +8,7 @@ import { contextProvider } from '../AuthProvider';
 import useStatus from '../components/hooks/useStatus';
 import logo from '../../public/logo.png'
 import { useState } from 'react';
+import anime from 'animejs';
 
 const DashLayout = () => {
     useTitle('dashboard')
@@ -16,6 +17,17 @@ const DashLayout = () => {
     useTitle('Dashboard');
     const [status] = useStatus();
     //  console.log(status)
+    const cardRef = useRef(null)
+    useEffect(() => {
+        anime({
+            targets: cardRef.current,
+            translateY: '-2vw',
+            duration: 6000,
+            // easing: 'easeInOutQuad',
+            loop: true,
+        })
+    },
+        [])
     const handleLogout = ()=>{
         logoutUser()
         .then(()=>{})
@@ -31,18 +43,20 @@ const DashLayout = () => {
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col items-center justify-center">    
                 <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>               
+                    
                     <Outlet></Outlet>
+                   
                     
 
                 </div>
                 <div className="drawer-side bg-purple-900">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                    <div className='px-6 pt-5'>
+                    <div className='px-6 pt-20 ' ref={cardRef}>
                         <img src={logo} alt="" className='w-20 h-16 mt-5'/>
                         <p className='text-4xl text-sky-200 font-serif mt-3'>Global Talk</p>
                         
                     </div>
-                    <ul className="menu p-4 w-80 h-full text-white font-serif text-lg pt-24">
+                    <ul className="menu p-4 w-80 h-full text-white font-serif text-lg pt-16">
                           
                        {
                          status == 'admin' && <>
@@ -72,7 +86,7 @@ const DashLayout = () => {
                         <li><NavLink to='/' className={({isActive})=> isActive ? 'text-blue-400' : ''}><FaHome></FaHome>Home</NavLink></li>
                         <li><NavLink to='/classes' className={({isActive})=> isActive ? 'text-blue-400' : ''}><FaSchool></FaSchool>  Classes</NavLink></li>
                         <li><NavLink to='/instructors' className={({isActive})=> isActive ? 'text-blue-400' : ''}><FaUserCheck></FaUserCheck>Instructors</NavLink></li>
-                        <button onClick={handleLogout} className='bg-purple-50 p-5 text-blue-900 uppercase mt-40'>Log out</button>
+                        <button onClick={handleLogout} className='bg-purple-50 py-5 text-blue-900 uppercase mt-10'>Log out</button>
                         
                     </ul>
 
