@@ -13,7 +13,7 @@ const Faq = () => {
                     Q1: Why is it important to learn foreign languages?
                     </div>
                     <div className="collapse-content ">
-                        <p className='p-4'>Learning foreign languages is important for several reasons. It enhances cultural understanding. Language is deeply intertwined with culture, and by learning a foreign language, you gain insight into the customs, traditions, and perspectives of another society. This understanding fosters empathy and helps break down cultural barriers.</p>
+                        <p className='p-4 text-black'>Learning foreign languages is important for several reasons. It enhances cultural understanding. Language is deeply intertwined with culture, and by learning a foreign language, you gain insight into the customs, traditions, and perspectives of another society. This understanding fosters empathy and helps break down cultural barriers.</p>
                     </div>
                 </div>
                 <div className="collapse collapse-arrow bg-base-200">
@@ -22,7 +22,7 @@ const Faq = () => {
                     Q2: How does learning a foreign language benefit personal growth?
                     </div>
                     <div className="collapse-content">
-                        <p className='p-4'> Learning a foreign language contributes to personal growth by expanding cultural understanding, improving cognitive abilities, boosting self-confidence, enhancing communication skills, and fostering adaptability. This exposure fosters a greater sense of empathy, cultural sensitivity, and appreciation for diversity.</p>
+                        <p className='p-4 text-black'> Learning a foreign language contributes to personal growth by expanding cultural understanding, improving cognitive abilities, boosting self-confidence, enhancing communication skills, and fostering adaptability. This exposure fosters a greater sense of empathy, cultural sensitivity, and appreciation for diversity.</p>
                     </div>
                 </div>
                 <div className="collapse collapse-arrow bg-base-200 my-2">
@@ -31,7 +31,7 @@ const Faq = () => {
                     Q3: What is an effective strategy for learning a foreign language?
                     </div>
                     <div className="collapse-content ">
-                        <p className='p-4'>One effective strategy for learning a foreign language is to prioritize immersion and active practice. Immersion involves exposing yourself to the language as much as possible, both through listening and reading materials in the target language. This can include watching movies or TV shows, listening to music or podcasts, and reading books or articles. Immersion helps you familiarize yourself with the language's natural flow, vocabulary, and cultural context.</p>
+                        <p className='p-4 text-black'>One effective strategy for learning a foreign language is to prioritize immersion and active practice. Immersion involves exposing yourself to the language as much as possible, both through listening and reading materials in the target language. This can include watching movies or TV shows, listening to music or podcasts, and reading books or articles. Immersion helps you familiarize yourself with the language's natural flow, vocabulary, and cultural context.</p>
                     </div>
                 </div>
             </div>
