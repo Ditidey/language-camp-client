@@ -89,7 +89,7 @@ const DashLayout = () => {
                         <button onClick={handleLogout} className='bg-purple-50 py-5 text-blue-900 uppercase mt-10'>Log out</button>
                         
                     </ul>
-
+{/* git commit */}
                 </div>
             </div>
         </div>
