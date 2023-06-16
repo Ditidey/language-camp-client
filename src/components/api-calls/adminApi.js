@@ -1,5 +1,5 @@
 import Swal from "sweetalert2";
-import useAxios from '../../components/hooks/useAxios';
+import useAxios from "../hooks/useAxios";
  
 
 const [axiosFetch] = useAxios()

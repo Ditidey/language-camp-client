@@ -40,12 +40,17 @@ const PopularClasses = () => {
             <DivTitle title={'popular classes'}></DivTitle>
 
             <Swiper
-                slidesPerView={3}
+                slidesPerView={2}
                 spaceBetween={30}
                 freeMode={true}
                 pagination={{
                     clickable: true,
                 }}
+                breakpoints={{
+                    768: {
+                      slidesPerView: 3,
+                    },
+                  }}
                 modules={[FreeMode, Pagination]}
                 className="mySwiper"
                 ref={cardRef}

@@ -2,6 +2,7 @@
 import anime from 'animejs';
 import React, { useEffect, useRef, useState } from 'react';
 import DivTitle from '../../components/shared/DivTitle';
+import PopularInstrSeeButton from './PopularInstrSeeButton';
 const PopularInstruc = () => {
     const [teachers, setTeachers] = useState([]);
     const cardRef = useRef(null)
@@ -15,6 +16,7 @@ const PopularInstruc = () => {
         })
     },
         [])
+      
     useEffect(() => {
         fetch('https://language-camp-server.vercel.app/students')
             .then(res => res.json())
@@ -37,6 +39,7 @@ const PopularInstruc = () => {
                             <p>{tech.email}</p>
                             <div className="card-actions justify-end mt-4">
                                 <button className="btn btn-primary bg-purple-800">See classes!</button>
+                                  
                             </div>
                         </div>
                     </div>)

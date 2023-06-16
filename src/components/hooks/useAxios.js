@@ -1,15 +1,17 @@
 import axios from 'axios';
-// import { useContext } from 'react';
+// import { useContext, useEffect } from 'react';
 // import { useNavigate } from 'react-router-dom';
 // import { contextProvider } from '../../AuthProvider';
-
+ 
+const axiosFetch = axios.create({
+    baseURL: 'https://language-camp-server.vercel.app'
+    // baseURL: 'http://localhost:5000/'
+})
 const useAxios = () => {
     // const navigate = useNavigate();
     // const { logoutUser } = useContext(contextProvider);
 
-    const axiosFetch = axios.create({
-        baseURL: 'https://language-camp-server.vercel.app'
-    })
+   
     //    todo: interceptor add
 
     // useEffect(() => {
