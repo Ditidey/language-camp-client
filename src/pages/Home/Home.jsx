@@ -7,6 +7,7 @@ import { useState } from 'react';
 import useTitle from '../../components/hooks/useTitle';
 import Faq from './Faq';
 import { FiMessageSquare } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
     useTitle('Home')
@@ -26,7 +27,8 @@ const Home = () => {
 
             <div className='bg-transparent bottom-0 fixed ms-10 ps-2 mt-5'>
                 <p className='text-xl font-serif font-bold flex text-purple-700 mb-2'>
-                     <FiMessageSquare className='bg-purple-800 text-blue-50 w-16 h-16 rounded-full p-4'></FiMessageSquare> <span className='mt-4 ms-2 bg-purple-50 px-2 pt-2 rounded-2xl'> Chat with us</span></p>
+                     <FiMessageSquare className='bg-purple-800 text-blue-50 w-16 h-16 rounded-full p-4'></FiMessageSquare> <span className='mt-4 ms-2 bg-purple-50 px-2 pt-2 rounded-2xl'> 
+                      <Link to='/chat'>Message us</Link></span></p>
                 
             </div>
         </div>

@@ -14,4 +14,4 @@
 ### Used:
 * JavaScript, React.js, Express.js, Tailwind, DaisyUI, 
 * Tools: Firebase, Vercel, MongoDB 
-* Packages: react sweetalart, swiper autoplay, react-icons, react anime, react hook form, react aos, react spinner, react typewriter, react zoom, react stripe js.
+* Packages: react sweetalart, swiper autoplay, react-icons, react anime, react hook form, react aos, react spinner, react typewriter, react zoom, react stripe js, EmailJS.

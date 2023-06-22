@@ -22,6 +22,7 @@ import InstructorRoute from "./InstructorRoute";
 import UpdateClass from "../pages/InstructorPages/UpdateClass";
 import Payment from "../pages/UserPages/Payment";
 import PaymentHistory from "../pages/UserPages/PaymentHistory";
+import Chat from "../pages/Home/Chat";
 
 const router = createBrowserRouter([
     {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '/chat',
+                element: <Chat></Chat>
             }
         ]
     },

@@ -8,7 +8,7 @@ const Footer = () => {
         <div className='bg-purple-950 mt-96 md:mt-2 md:pt-14 px-6'>
             <div className='md:flex md:justify-evenly'>
                 <div className='text-center pt-20'>
-                    <img src={logo} alt="" className='w-10 h-10 md:ms-8 mt-2 my-2 ms-44' />
+                    <img src={logo} alt="" className='w-12 h-12 rounded-full md:ms-8 mt-2 my-2 ms-44' />
                     <p className='text-blue-100 text-3xl font-serif font-bold mt-2'>Global Talk</p>
                     <p className='text-xl text-blue-300 inline-flex ms-0'>
                         <CiLocationOn className='mt-1 me-1'></CiLocationOn>
