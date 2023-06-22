@@ -5,7 +5,7 @@ const Faq = () => {
     return (
         <div className='md:mt-20 mt-60 md:flex '>
 
-            <div className='mx-10 md:mt-0 mt-96 p-4 w-1/2'>
+            <div className='md:mx-10 md:mt-0 mt-96 p-4 md:w-1/2'>
                   <p className='text-4xl font-serif font-bold px-6 pb-6 md:mt-0 mt-80'>FAQ</p>
                 <div className="collapse collapse-arrow bg-base-200 my-2 mt-4">
                     <input type="radio" name="my-accordion-2" checked="checked" />
@@ -35,7 +35,7 @@ const Faq = () => {
                     </div>
                 </div>
             </div>
-            <div className=' mx-2 px-5  '>
+            <div className=' mx-3 md:px-5  '>
                 <p className='text-4xl font-serif font-bold p-6 uppercase'>
                 <Typewriter
                 words={[ 'Our Learners']}

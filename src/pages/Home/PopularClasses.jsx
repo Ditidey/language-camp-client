@@ -26,17 +26,17 @@ const PopularClasses = () => {
     },
         [])
     useEffect(() => {
-        console.log(students)
+        // console.log(students)
         fetch(`https://language-camp-server.vercel.app/classes?students=${students}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data)              
+                // console.log(data)              
                 setSelected(data)
             })
     }, [students])
    
     return (
-        <div className='py-20 px-20 mt-10'>
+        <div className='py-20 md:px-20 px-4 mt-10'>
             <DivTitle title={'popular classes'}></DivTitle>
 
             <Swiper

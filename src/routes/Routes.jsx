@@ -23,6 +23,7 @@ import UpdateClass from "../pages/InstructorPages/UpdateClass";
 import Payment from "../pages/UserPages/Payment";
 import PaymentHistory from "../pages/UserPages/PaymentHistory";
 import Chat from "../pages/Home/Chat";
+import PopularInstrSeeButton from "../pages/Home/PopularInstrSeeButton";
 
 const router = createBrowserRouter([
     {
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
             {
                 path: '/chat',
                 element: <Chat></Chat>
+            },
+            {
+                path: '/see-classes/:id',
+                element: <PopularInstrSeeButton></PopularInstrSeeButton>
             }
         ]
     },

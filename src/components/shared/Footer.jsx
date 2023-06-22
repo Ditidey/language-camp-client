@@ -3,9 +3,10 @@ import { AiOutlineWechat } from 'react-icons/ai';
 import { FiFacebook, FiInstagram, FiTwitter, FiPhoneCall } from 'react-icons/fi';
 import { CiLocationOn } from 'react-icons/ci';
 import logo from '../../../public/logo.png'
+import { Link } from 'react-router-dom';
 const Footer = () => {
     return (
-        <div className='bg-purple-950 mt-96 md:mt-2 md:pt-14 px-6'>
+        <div className='bg-purple-950   mt-2 md:pt-14 px-6'>
             <div className='md:flex md:justify-evenly'>
                 <div className='text-center pt-20'>
                     <img src={logo} alt="" className='w-12 h-12 rounded-full md:ms-8 mt-2 my-2 ms-44' />
@@ -19,7 +20,9 @@ const Footer = () => {
                     <div className='text-center text-blue-300'>
                         <p className='font-serif text-2xl py-10'>Stay Updated</p>
                         <p className='font-sans'>Be the first to know about our latest classes <br /> and get exclusive free trial with us.</p>
+                        <Link to='/chat'>
                         <input type="email" name="" id="" placeholder='Email Address' className='border-white p-4 my-10' />
+                        </Link>
                         <input type="submit" value="Contact Us" className='p-4 bg-blue-500' />
                     </div>
                     <div className='flex justify-center space-x-4'>

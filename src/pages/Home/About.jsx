@@ -19,11 +19,11 @@ const About = () => {
     return (
         <div className='mt-20'> 
         <DivTitle title={'Explore us'}></DivTitle>
-        <div className='md:relative px-20 py-10 bg-purple-50 h-[650px] mb-60 md:mb-2'>
+        <div className='md:relative md:px-20 px-3 py-10 bg-purple-50 h-[650px] mb-60 md:mb-2'>
 
              <img ref={cardRef} className='h-[600px] ' src="https://media.istockphoto.com/id/1297624591/photo/smiling-female-teacher-writing-at-whiteboard-explaining-rules.webp?b=1&s=170667a&w=0&k=20&c=1DgovZC5nWYpfF6wRTyZWQmf6uMtPWa891KZ7Nw8lwk=" alt="" />
 
-             <div className='bg-purple-800 text-white text-left ps-20 md:absolute  p-10 top-[15%] left-[50%] md:h-[500px] h-[700px] md:w-[700px] mb-40 md:mb-2'>
+             <div className='bg-purple-800 text-white text-left md:ps-20 ps-3 md:absolute  p-10 top-[15%] left-[50%] md:h-[500px] h-[700px] md:w-[700px] mb-40 md:mb-2'>
                 <p className='text-blue-300 my-4'>Explore Global Talk</p>
                 <h2 className='text-5xl font-extralight mb-10'>
                 Enroll <br /> interactive facilitators <br />

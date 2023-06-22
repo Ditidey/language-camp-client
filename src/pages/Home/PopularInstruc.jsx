@@ -3,6 +3,7 @@ import anime from 'animejs';
 import React, { useEffect, useRef, useState } from 'react';
 import DivTitle from '../../components/shared/DivTitle';
 import PopularInstrSeeButton from './PopularInstrSeeButton';
+import { Link } from 'react-router-dom';
 const PopularInstruc = () => {
     const [teachers, setTeachers] = useState([]);
     const cardRef = useRef(null)
@@ -29,16 +30,17 @@ const PopularInstruc = () => {
         <div className='pt-10 pb-5'>
             <DivTitle title={'Popular Instructors'}></DivTitle>
 
-            <div className='px-20 py-5 grid md:grid-cols-2 lg:grid-cols-3 gap-5'>
+            <div className='md:px-20 px-3 py-5 grid md:grid-cols-2 lg:grid-cols-3 gap-5'>
                 {
                     teachers.slice(0, 6).map(tech => 
-                    <div key={tech._id} className="card w-[400px] h-[500px] glass">
+                    <div key={tech._id} className="card md:w-[400px] h-[500px] glass">
                         <figure><img ref={cardRef} src={tech.photo} alt="car!" className='hover:scale-125 duration-500 h-[300px] w-[400px]'/></figure>
                         <div className="card-body text-center font-serif">
                             <h2 className=" font-bold text-2xl text-center">{tech.name}</h2>
                             <p>{tech.email}</p>
                             <div className="card-actions justify-end mt-4">
-                                <button className="btn btn-primary bg-purple-800">See classes!</button>
+                                <button className="btn btn-primary bg-purple-800">
+                                    <Link to={`see-classes/${tech.email}`}>See classes!</Link></button>
                                   
                             </div>
                         </div>
