@@ -16,7 +16,7 @@ const PaymentHistory = () => {
         }
     })
     const sortedPayments = classes.sort((a, b) => new Date(b.date) - new Date(a.date));
-    console.log(sortedPayments)
+    // console.log(sortedPayments)
     return (
         <div className='w-full h-full p-20'>
             <DivTitle title={'payment history'}></DivTitle>

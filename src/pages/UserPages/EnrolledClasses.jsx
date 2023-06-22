@@ -7,7 +7,7 @@ import { useQuery } from 'react-query';
 const EnrolledClasses = () => {
     const { user } = useContext(contextProvider);
     const [axiosFetch] = useAxios();
-    console.log(user.email)
+    // console.log(user.email)
    
     const {data: classes=[], refetch} = useQuery({
         queryKey: ['payment'],

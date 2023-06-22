@@ -22,7 +22,7 @@ const UpdateClass = () => {
             method: 'POST',
             body: formData
          }).then(res => res.json()).then(file => {
-            console.log(file)
+            // console.log(file)
             if(file.success){
                 const imgURL = file.data.display_url;
 
@@ -38,7 +38,7 @@ const UpdateClass = () => {
                 console.log(newClass)
                 axiosFetch.put(`classes/${id}`, newClass)
                 .then(res => {
-                    console.log(res)
+                    // console.log(res)
                     if(res.data.modifiedCount > 0){
                         Swal.fire({
                             icon: 'success',

@@ -1,6 +1,7 @@
 import anime from 'animejs';
 import React, { useEffect, useRef, useState } from 'react';
 import useTitle from '../components/hooks/useTitle';
+import { Link } from 'react-router-dom';
 
 const Instructors = () => {
     useTitle('Instructors')
@@ -44,7 +45,7 @@ const Instructors = () => {
                                 <h2 className="card-title">{tech.name}</h2>
                                 <p>{tech.email}</p>
                                 <div className="card-actions justify-end">
-                                    <button className="btn btn-primary bg-purple-800">See classes!</button>
+                                    <button className="btn btn-primary bg-purple-800"> <Link to={`/see-classes/${tech.email}`}>See classes!</Link></button>
                                 </div>
                             </div>
                         </div>)

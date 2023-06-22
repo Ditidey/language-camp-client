@@ -40,7 +40,7 @@ const PopularInstruc = () => {
                             <p>{tech.email}</p>
                             <div className="card-actions justify-end mt-4">
                                 <button className="btn btn-primary bg-purple-800">
-                                    <Link to={`see-classes/${tech.email}`}>See classes!</Link></button>
+                                    <Link to={`/see-classes/${tech.email}`}>See classes!</Link></button>
                                   
                             </div>
                         </div>

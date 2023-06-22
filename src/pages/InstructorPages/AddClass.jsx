@@ -10,14 +10,14 @@ const AddClass = () => {
          const img_url = `https://api.imgbb.com/1/upload?expiration=600&key=${import.meta.env.VITE_IMG_TOKEN}`
 
     const onSubmit = data => {
-        console.log(data)
+        // console.log(data)
         const formData = new FormData();
         formData.append('image', data.photo[0])
          fetch(img_url, {
             method: 'POST',
             body: formData
          }).then(res => res.json()).then(file => {
-            console.log(file)
+            // console.log(file)
             if(file.success){
                 const imgURL = file.data.display_url;
                 const newClass = {
@@ -30,10 +30,10 @@ const AddClass = () => {
                     status: 'pending',
                     students: 0
                 }
-                console.log(newClass)
+                // console.log(newClass)
                 axiosFetch.post('/add-classes', newClass)
                 .then(res => {
-                    console.log(res)
+                    // console.log(res)
                     if(res.data.insertedId){
                         Swal.fire({
                             icon: 'success',

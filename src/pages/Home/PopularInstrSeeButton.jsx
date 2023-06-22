@@ -8,7 +8,7 @@ const PopularInstrSeeButton = () => {
   const {id} = useParams();
     const [classes] = getClasses();   
     const classesFilter = classes.filter(each => each.teacher_email == id)
-      console.log(classesFilter)
+      // console.log(classesFilter)
     return (
         <div className='pt-28 pb-10'>
          <DivTitle title={`Total ${classesFilter.length} classes available`}></DivTitle>

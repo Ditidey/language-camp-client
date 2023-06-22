@@ -16,27 +16,16 @@ const PayMentForm = ({ eachClass, price }) => {
     const [success, setSuccess] = useState('');
     const { user } = useContext(contextProvider);
     const [axiosFetch] = useAxios();
-    // const price = eachClass.price;
-    // console.log(price, eachClass)
-
     
         useEffect(() => {
-            console.log('use effect ...', price)
+            // console.log('use effect ...', price)
           if(price > 0){
                axiosFetch.post('/create-payment', { price })
                 .then(res => {
                     console.log(res.data.clientSecret)
                     setClientSecret(res.data.clientSecret)
                 })
-            // fetch('https://language-camp-server.vercel.app/create-payment', {
-            //     method: 'POST',
-            //     headers: { 'content-type': 'application/json' },
-            //     body: JSON.stringify({ price })
-            // }).then(res => res.json())
-            //     .then(data => {
-            //         console.log(data.clientSecret)
-            //         setClientSecret(data.clientSecret)
-            //     })
+            
           }
         }, [price])
   
